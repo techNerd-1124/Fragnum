@@ -1,0 +1,490 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "grid",
+            "media_columns": "two",
+            "image_gap": 4,
+            "large_first_image": false,
+            "icons_style": "none",
+            "slideshow_controls_style": "counter",
+            "slideshow_mobile_controls_style": "dots",
+            "thumbnail_position": "right",
+            "thumbnail_width": 44,
+            "aspect_ratio": "1/1.25",
+            "constrain_to_viewport": false,
+            "media_radius": 0,
+            "extend_media": true,
+            "zoom": true,
+            "video_loop": false,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 28,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 24,
+            "padding-block-end": 24,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "header": {
+              "type": "group",
+              "name": "Header",
+              "settings": {
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "link": "",
+                "open_in_new_tab": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "title": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "h3",
+                    "font": "var(--font-primary--family)",
+                    "font_size": "",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "price": {
+                  "type": "price",
+                  "settings": {
+                    "show_sale_price_first": true,
+                    "show_installments": false,
+                    "show_tax_info": false,
+                    "type_preset": "paragraph",
+                    "width": "100%",
+                    "alignment": "left",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "color": "var(--color-foreground)",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "key_benefits": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>🕰️ Long-lasting performance</p><p>🌿 Fresh citrus clarity</p><p>🌲 Warm woody depth</p><p>🧴 Elegant glass presentation</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "paragraph",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "title",
+                "price",
+                "key_benefits"
+              ]
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "description": {
+              "type": "text",
+              "name": "Product description",
+              "settings": {
+                "text": "<p>{{ closest.product.description }}</p>",
+                "width": "100%",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-primary--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "header",
+            "variant_picker",
+            "buy_buttons",
+            "description"
+          ]
+        }
+      },
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "image_with_text_1": {
+      "type": "tsapb-664c7c40",
+      "blocks": {
+        "image_with_text_1_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Long-Lasting Performance You Can Trust",
+            "heading_size": "32",
+            "heading_color": "#222222",
+            "heading_alternative_font": false,
+            "heading_font": "helvetica_n4"
+          }
+        },
+        "image_with_text_1_text": {
+          "type": "text",
+          "settings": {
+            "description": "<p>Fragnum Sauvage is formulated for extended wear, giving you a steady, evolving scent throughout the day and into the evening. A concentrated blend ensures fewer reapplications and consistent projection for important moments.</p>",
+            "description_size": "16",
+            "description_color": "#222222",
+            "description_alternative_font": false,
+            "description_font": "helvetica_n4"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_1_heading",
+        "image_with_text_1_text"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/dior-sauvage.webp?v=1761042023",
+        "aspect_ratio": "original",
+        "image_position": "left",
+        "image_mobile_position": "above",
+        "text_alignment": "left",
+        "text_box_width": 50,
+        "section_width": 90,
+        "section_max_width": "1200",
+        "vertical_padding": 0,
+        "vertical_margin": 24,
+        "vertical_padding_mobile": 0,
+        "vertical_margin_mobile": 24,
+        "text_box_background": "rgba(0,0,0,0)",
+        "section_background": ""
+      }
+    },
+    "image_with_text_2": {
+      "type": "tsapb-664c7c40",
+      "blocks": {
+        "image_with_text_2_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Sophisticated Citrus-to-Wood Scent Profile",
+            "heading_size": "32",
+            "heading_color": "#222222",
+            "heading_alternative_font": false,
+            "heading_font": "helvetica_n4"
+          }
+        },
+        "image_with_text_2_text": {
+          "type": "text",
+          "settings": {
+            "description": "<p>Bright citrus top notes create an immediate fresh impression while a warm woody base provides depth and character. This contrast produces a modern, versatile aroma that works across seasons and settings.</p>",
+            "description_size": "16",
+            "description_color": "#222222",
+            "description_alternative_font": false,
+            "description_font": "helvetica_n4"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_2_heading",
+        "image_with_text_2_text"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/Container.webp?v=1761809397",
+        "aspect_ratio": "original",
+        "image_position": "right",
+        "image_mobile_position": "above",
+        "text_alignment": "left",
+        "text_box_width": 50,
+        "section_width": 90,
+        "section_max_width": "1200",
+        "vertical_padding": 0,
+        "vertical_margin": 0,
+        "vertical_padding_mobile": 0,
+        "vertical_margin_mobile": 0,
+        "text_box_background": "rgba(0,0,0,0)",
+        "section_background": ""
+      }
+    },
+    "image_with_text_3": {
+      "type": "tsapb-664c7c40",
+      "blocks": {
+        "image_with_text_3_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Designed For Everyday And Evenings",
+            "heading_size": "32",
+            "heading_color": "#222222",
+            "heading_alternative_font": false,
+            "heading_font": "helvetica_n4"
+          }
+        },
+        "image_with_text_3_text": {
+          "type": "text",
+          "settings": {
+            "description": "<p>An expert-balanced composition makes Fragnum Sauvage appropriate for the office, date nights, and special events—without losing subtlety or sophistication. Its clean, musky-wood finish leaves a refined trace that enhances personal style.</p>",
+            "description_size": "16",
+            "description_color": "#222222",
+            "description_alternative_font": false,
+            "description_font": "helvetica_n4"
+          }
+        }
+      },
+      "block_order": [
+        "image_with_text_3_heading",
+        "image_with_text_3_text"
+      ],
+      "settings": {
+        "image_desktop": "shopify://shop_images/Musky-Clean-minimalist-scent_1_10faffab-18ef-4c8c-b083-65274ab32e7b.webp?v=1761809427",
+        "aspect_ratio": "original",
+        "image_position": "left",
+        "image_mobile_position": "above",
+        "text_alignment": "left",
+        "text_box_width": 50,
+        "section_width": 90,
+        "section_max_width": "1200",
+        "vertical_padding": 0,
+        "vertical_margin": 24,
+        "vertical_padding_mobile": 0,
+        "vertical_margin_mobile": 24,
+        "text_box_background": "rgba(0,0,0,0)",
+        "section_background": ""
+      }
+    },
+    "final_call_to_action": {
+      "type": "tsapb-321d44ce",
+      "blocks": {
+        "final_call_to_action_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Claim Your Signature Scent Today",
+            "heading_size": "24",
+            "heading_style": "regular",
+            "heading_color": "#222222",
+            "heading_alternative_font": false,
+            "heading_font": "helvetica_n4"
+          }
+        },
+        "final_call_to_action_text": {
+          "type": "text",
+          "settings": {
+            "description": "<p>Fragnum Sauvage delivers dependable longevity, a refined citrus-wood character, and premium presentation—everything a modern man needs in a signature fragrance. Limited stock is available, so secure your bottle now to elevate your daily presence.</p>",
+            "description_size": "16",
+            "description_color": "#222222",
+            "description_alternative_font": false,
+            "description_font": "helvetica_n4"
+          }
+        },
+        "final_call_to_action_buttons": {
+          "type": "buttons",
+          "settings": {
+            "primary_button_behaviour": "scroll_to_top",
+            "primary_button_label": "Add to Cart",
+            "primary_button_link": "",
+            "primary_button_style": "solid",
+            "primary_text_color": "#ffffff",
+            "primary_background_color": "#222222",
+            "primary_border_color": "#222222",
+            "primary_button_corner": 0,
+            "primary_new_tab": false,
+            "secondary_button_label": "",
+            "secondary_button_link": "",
+            "secondary_button_style": "solid",
+            "secondary_text_color": "#ffffff",
+            "secondary_background_color": "#222222",
+            "secondary_border_color": "#222222",
+            "secondary_button_corner": 0,
+            "secondary_new_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "final_call_to_action_heading",
+        "final_call_to_action_text",
+        "final_call_to_action_buttons"
+      ],
+      "settings": {
+        "content_alignment": "center",
+        "content_layout_desktop": "vertical",
+        "section_width": 90,
+        "section_max_width": "1200",
+        "vertical_padding": 20,
+        "vertical_margin": 16,
+        "vertical_padding_mobile": 20,
+        "vertical_margin_mobile": 16,
+        "section_background_style": "regular",
+        "section_background": "rgba(0,0,0,0)",
+        "section_gradient": "linear-gradient(180deg, rgba(114, 255, 179, 1), rgba(255, 250, 99, 1) 100%)",
+        "enable_animation": false,
+        "block_corner_radius": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "image_with_text_1",
+    "image_with_text_2",
+    "image_with_text_3",
+    "final_call_to_action"
+  ]
+}

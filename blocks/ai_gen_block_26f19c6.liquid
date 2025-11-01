@@ -1,0 +1,251 @@
+{% doc %}
+  @prompt
+    show product tag
+{% enddoc %}
+{% assign ai_gen_id = block.id | replace: '_', '' | downcase %}
+
+{% style %}
+  .ai-product-tags-{{ ai_gen_id }} {
+    display: flex;
+    flex-wrap: wrap;
+    gap: {{ block.settings.tag_spacing }}px;
+    padding: {{ block.settings.container_padding }}px 0;
+  }
+
+  .ai-product-tag-{{ ai_gen_id }} {
+    display: inline-flex;
+    align-items: center;
+    padding: {{ block.settings.tag_padding_vertical }}px {{ block.settings.tag_padding_horizontal }}px;
+    background-color: {{ block.settings.tag_background_color }};
+    color: {{ block.settings.tag_text_color }};
+    border: {{ block.settings.tag_border_width }}px solid {{ block.settings.tag_border_color }};
+    border-radius: {{ block.settings.tag_border_radius }}px;
+    font-size: {{ block.settings.tag_font_size }}px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    {% if block.settings.tag_text_transform == 'uppercase' %}
+      text-transform: uppercase;
+    {% endif %}
+  }
+
+  .ai-product-tag-{{ ai_gen_id }}:hover {
+    background-color: {{ block.settings.tag_hover_background_color }};
+    color: {{ block.settings.tag_hover_text_color }};
+    border-color: {{ block.settings.tag_hover_border_color }};
+  }
+
+  .ai-product-tag-icon-{{ ai_gen_id }} {
+    width: {{ block.settings.icon_size }}px;
+    height: {{ block.settings.icon_size }}px;
+    margin-right: 6px;
+    stroke: currentColor;
+  }
+
+  .ai-product-tags-empty-{{ ai_gen_id }} {
+    color: {{ block.settings.tag_text_color }};
+    opacity: 0.5;
+    font-size: {{ block.settings.tag_font_size }}px;
+    font-style: italic;
+  }
+{% endstyle %}
+
+<div class="ai-product-tags-{{ ai_gen_id }}" {{ block.shopify_attributes }}>
+  {% if product.tags.size > 0 %}
+    {% for tag in product.tags %}
+      {% if block.settings.enable_tag_links %}
+        <a href="{{ routes.collections_url }}/all/{{ tag | handle }}" class="ai-product-tag-{{ ai_gen_id }}">
+          {% if block.settings.show_icon %}
+            <svg class="ai-product-tag-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="7" y1="7" x2="7.01" y2="7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {% endif %}
+          {{ tag }}
+        </a>
+      {% else %}
+        <span class="ai-product-tag-{{ ai_gen_id }}">
+          {% if block.settings.show_icon %}
+            <svg class="ai-product-tag-icon-{{ ai_gen_id }}" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              <line x1="7" y1="7" x2="7.01" y2="7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          {% endif %}
+          {{ tag }}
+        </span>
+      {% endif %}
+    {% endfor %}
+  {% else %}
+    <div class="ai-product-tags-empty-{{ ai_gen_id }}">
+      No tags available
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Product tags",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Tag style"
+    },
+    {
+      "type": "color",
+      "id": "tag_background_color",
+      "label": "Background",
+      "default": "#f5f5f5"
+    },
+    {
+      "type": "color",
+      "id": "tag_text_color",
+      "label": "Text",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_border_color",
+      "label": "Border",
+      "default": "#e6e6e6"
+    },
+    {
+      "type": "color",
+      "id": "tag_hover_background_color",
+      "label": "Hover background",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "tag_hover_text_color",
+      "label": "Hover text",
+      "default": "#ffffff"
+    },
+    {
+      "type": "color",
+      "id": "tag_hover_border_color",
+      "label": "Hover border",
+      "default": "#000000"
+    },
+    {
+      "type": "range",
+      "id": "tag_font_size",
+      "min": 10,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Font size",
+      "default": 12
+    },
+    {
+      "type": "select",
+      "id": "tag_text_transform",
+      "label": "Text case",
+      "options": [
+        {
+          "value": "none",
+          "label": "Default"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "tag_border_width",
+      "min": 0,
+      "max": 4,
+      "step": 1,
+      "unit": "px",
+      "label": "Border width",
+      "default": 1
+    },
+    {
+      "type": "range",
+      "id": "tag_border_radius",
+      "min": 0,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Border radius",
+      "default": 14
+    },
+    {
+      "type": "range",
+      "id": "tag_padding_vertical",
+      "min": 2,
+      "max": 20,
+      "step": 1,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 6
+    },
+    {
+      "type": "range",
+      "id": "tag_padding_horizontal",
+      "min": 4,
+      "max": 30,
+      "step": 2,
+      "unit": "px",
+      "label": "Horizontal padding",
+      "default": 12
+    },
+    {
+      "type": "range",
+      "id": "tag_spacing",
+      "min": 4,
+      "max": 20,
+      "step": 2,
+      "unit": "px",
+      "label": "Spacing between tags",
+      "default": 8
+    },
+    {
+      "type": "range",
+      "id": "container_padding",
+      "min": 0,
+      "max": 40,
+      "step": 4,
+      "unit": "px",
+      "label": "Container padding",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Icon"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_icon",
+      "label": "Show tag icon",
+      "default": false
+    },
+    {
+      "type": "range",
+      "id": "icon_size",
+      "min": 10,
+      "max": 24,
+      "step": 2,
+      "unit": "px",
+      "label": "Icon size",
+      "default": 14
+    },
+    {
+      "type": "header",
+      "content": "Behavior"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_tag_links",
+      "label": "Enable tag links",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product tags"
+    }
+  ]
+}
+{% endschema %}
