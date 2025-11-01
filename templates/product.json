@@ -109,6 +109,7 @@
               "blocks": {
                 "ai_gen_block_26f19c6_VYBapG": {
                   "type": "ai_gen_block_26f19c6",
+                  "disabled": true,
                   "settings": {
                     "tag_background_color": "#f5f5f5",
                     "tag_text_color": "#000000",
@@ -198,6 +199,7 @@
                     },
                     "price_HEGpwJ": {
                       "type": "price",
+                      "disabled": true,
                       "settings": {
                         "show_sale_price_first": true,
                         "show_installments": false,
@@ -233,6 +235,7 @@
             "divider_VJhene": {
               "type": "_divider",
               "name": "t:names.divider",
+              "disabled": true,
               "settings": {
                 "thickness": 1,
                 "corner_radius": "square",
@@ -241,54 +244,6 @@
                 "padding-block-end": 0
               },
               "blocks": {}
-            },
-            "variant_picker_R3rGDr": {
-              "type": "variant-picker",
-              "settings": {
-                "variant_style": "buttons",
-                "show_swatches": false,
-                "alignment": "left",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "buy_buttons_eYQEYi": {
-              "type": "buy-buttons",
-              "settings": {
-                "stacking": true,
-                "show_pickup_availability": false,
-                "gift_card_form": true,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
-                "add-to-cart": {
-                  "type": "add-to-cart",
-                  "static": true,
-                  "settings": {
-                    "style_class": "button"
-                  },
-                  "blocks": {}
-                },
-                "accelerated-checkout": {
-                  "type": "accelerated-checkout",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                }
-              },
-              "block_order": []
             },
             "text_aEtTtq": {
               "type": "text",
@@ -538,15 +493,65 @@
                 "accordion_row_Mw3qRT",
                 "accordion_row_36pNat"
               ]
+            },
+            "variant_picker_R3rGDr": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": false,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons_eYQEYi": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": false,
+                "gift_card_form": true,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
             }
           },
           "block_order": [
             "group_icgrde",
             "divider_VJhene",
-            "variant_picker_R3rGDr",
-            "buy_buttons_eYQEYi",
             "text_aEtTtq",
-            "accordion_TAepdn"
+            "accordion_TAepdn",
+            "variant_picker_R3rGDr",
+            "buy_buttons_eYQEYi"
           ]
         }
       },
@@ -823,11 +828,51 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "custom_faq_section_jgrAxJ": {
+      "type": "custom-faq-section",
+      "blocks": {
+        "accordion_kjtkyw": {
+          "type": "accordion",
+          "settings": {
+            "question": "Ingredients",
+            "answer": "<p>Alcohol Denat., Parfum, Aqua, Pogostemon Cablin Oil, Vanillin, Citronellol, Citrus Aurantium Bergamia Peel Oil, Ethylhexyl Salicylate, Limonene, Linalool, Butyl Methoxydibenzoylmethane, Linalyl Acetate, Pinene, Beta-Caryophyllene, Pelargonium Graveolens Flower Oil, Rose Flower Oil/Extract, Geraniol, Rose Ketones, Geranyl Acetate, Camphor, Citral, Alcohol, Terpineol, Terpinolene, Tris(Tetramethylhydroxypiperidinol) Citrate, Alpha-Terpinene, Benzyl Benzoate, Farnesol<br/><br/>Flammable product<br/><br/>For external use only</p>"
+          }
+        },
+        "accordion_xFKLgk": {
+          "type": "accordion",
+          "settings": {
+            "question": "Instructions",
+            "answer": "<p>To fully enjoy your olfactory experience and ensure safe use, here are a few tips.<br/><br/>USAGE PRECAUTIONS<br/><br/>•\tHold the bottle about 30 cm (12 inches) away from the skin for optimal and even diffusion.<br/><br/>•\tAvoid delicate or light-colored fabrics to prevent stains.<br/><br/>•\tDo not spray directly onto eyes, mucous membranes, or irritated skin.<br/><br/>•\tIf you have sensitive skin, perform a preliminary test by applying a small amount to the inside of your wrist before regular use.<br/><br/>APPLICATION AND DIFFUSION<br/><br/>•\tSpray the perfume on pulse points (wrists, behind the ears, base of the neck): the warmth of these areas intensifies the diffusion of the notes.<br/><br/>•\tAvoid rubbing your wrists together after application to preserve the purity of the olfactory accords.<br/><br/>•\tApply the perfume to clean, slightly moisturized skin for longer-lasting wear.<br/><br/>STORING YOUR PERFUME<br/><br/>•\tStore your bottle in a cool place, away from direct light, temperature variations, and humidity, to maintain the quality of your fragrance.</p>"
+          }
+        },
+        "accordion_pwHj6M": {
+          "type": "accordion",
+          "settings": {
+            "question": "Delivery",
+            "answer": "<p>Complimentary shipping from:<br/><br/>• €50 in France and within the European Union (with exceptions)<br/><br/>• €60 in Switzerland<br/><br/>• €100 internationally<br/><br/>For more information, please refer to our shipping and returns page.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_kjtkyw",
+        "accordion_xFKLgk",
+        "accordion_pwHj6M"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "heading": "",
+        "description": "<p>Oud Maracujá was voted Best Niche Fragrance 2024 by Fragrantica readers.</p>",
+        "image": "shopify://shop_images/MC_AMBI_OM_b73b6f1d-190b-40fb-9722-e355774930dc.webp",
+        "padding_top": 32,
+        "padding_bottom": 32
+      }
     }
   },
   "order": [
     "main",
     "1761548242134f5550",
-    "product_recommendations_qggXJq"
+    "product_recommendations_qggXJq",
+    "custom_faq_section_jgrAxJ"
   ]
 }
