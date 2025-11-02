@@ -45,6 +45,7 @@ class AccordionElement extends HTMLElement {
 
   closeAccordion() {
     this.removeAttribute("open");
+    this.tabHeader?.classList.remove("red");
     this.tabHeader.setAttribute("aria-expanded", "false");
 
     this.tabContent.style.maxHeight = this.tabContent.scrollHeight + "px";

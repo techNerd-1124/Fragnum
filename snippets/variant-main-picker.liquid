@@ -105,7 +105,7 @@
                     mode: 'unscaled'
                   %}
                 {% else %}
-                  <span class="variant-option__button-label__text">{{ product_option_value | escape }}</span>
+                  <span class="variant-option__button-label__text">{{ product_option_value | escape }} <span class="variant-option__button-label__text__price">{{ product_option_value.variant.price |  money }}</span> </span>
                 {% endif %}
                 {% render 'strikethrough-variant', product_option: product_option_value %}
               </label>
@@ -286,6 +286,11 @@
     text-wrap: auto;
   }
 
+  .variant-option__button-label__text__price{
+    font-weight: 700;
+    word-break: keep-all;
+  }
+
   .variant-option--equal-width-buttons {
     --variant-min-width: clamp(44px, calc(var(--variant-option-padding-inline) * 2 + var(--variant-ch)), 100%);
 
@@ -320,18 +325,26 @@
     min-height: auto;
   }
 
-  .variant-option__button-label:has(:checked) {
-    color: var(--color-selected-variant-text);
-    background-color: var(--color-selected-variant-background);
-    border-color: var(--color-selected-variant-border);
-    transition: background-color var(--animation-speed) var(--animation-easing),
-      border-color var(--animation-speed) var(--animation-easing);
+  .variant-option__button-label:has(:checked) .variant-option__button-label__text {
+    /* color: var(--color-selected-variant-text); */
+    /* background-color: var(--color-selected-variant-background); */
+    /* border-color: var(--color-selected-variant-border); */
+    /* transition: background-color var(--animation-speed) var(--animation-easing),
+      border-color var(--animation-speed) var(--animation-easing); */
 
-    &:hover {
+    /* &:hover {
       background-color: var(--color-selected-variant-hover-background);
       border-color: var(--color-selected-variant-hover-border);
       color: var(--color-selected-variant-hover-text);
+    } */
+
+    color: red;
+    transition: all 0.4s;
+
+    &:hover {
+      color: red;
     }
+
   }
 
   .variant-option__button-label:has([data-option-available='false']) {

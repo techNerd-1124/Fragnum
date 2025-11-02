@@ -29,7 +29,6 @@
         {%- if section.settings.image -%}
         <div class="custom__faq--media">
             {{ section.settings.image | image_url: width: '1000' | image_tag }}
-            {% comment %} {% render 'responsive-picture', desktopImage : section.settings.image %} {% endcomment %}
         </div>
         {%- endif -%}
         {%- if section.blocks.size > 0 -%}
