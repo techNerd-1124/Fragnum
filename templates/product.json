@@ -683,6 +683,20 @@
         "padding-block-end": 0
       }
     },
+    "feature_products_tab_switcher_eeD6qC": {
+      "type": "feature-products-tab-switcher",
+      "name": "Products tab switcher",
+      "settings": {
+        "section_heading": "Try layering",
+        "section_description": "At Maison Crivelli, each olfactory creation reveals unexpected facets that can be elevated by surprising combinations.",
+        "section_highlight_backgound": "#c93825",
+        "section_highlight_text": "#c93825",
+        "desktop_top_padding": 120,
+        "desktop_bottom_padding": 0,
+        "mobile_top_padding": 60,
+        "mobile_bottom_padding": 60
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -823,11 +837,74 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "feature_usp_section_kGHNKp": {
+      "type": "feature-usp-section",
+      "blocks": {
+        "usp_hCfjzT": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Ecrin_Xadeau_Offert_icon_3ad386d5-acfc-49b8-8720-0e36468c8454.svg",
+            "usp_heading": "Complimentary gift box",
+            "usp_description": "Welcome to my shop!Every purchase from our online shop is presented in gift boxes that are thoughtfully and meticulously crafted down to the finest detail, creating a truly unique signature."
+          }
+        },
+        "usp_TRV9Gb": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Offre_Decouverte_icon_af88a92b-ac69-4bda-9ef5-cce5f3d5fbc0.svg",
+            "usp_heading": "Discovery offer",
+            "usp_description": "With every purchase of a discovery set, receive a gift code that can be used toward your next order of a 50 ml or 100 ml perfume from the same collection (eaux de parfum or extraits de parfum)."
+          }
+        },
+        "usp_KpjaHH": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Livreson_Offerte_Icon_0e20376e-e626-42a4-88db-ea77c077f0cc.svg",
+            "usp_heading": "Complimentary shipping",
+            "usp_description": "For more information, please refer to our shipping and returns page."
+          }
+        },
+        "usp_qGkghy": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Echantillons_Offerts_Icon_0ef482d7-9d8b-4d81-92b3-507c2b399b83.svg",
+            "usp_heading": "Complimentary samples",
+            "usp_description": "Receive 2 complimentary samples of your choice with every order that includes a 50 ml or 100 ml bottle."
+          }
+        },
+        "usp_iCD6g3": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Paiement_Securse_Icon_266a62ec-40a0-4712-8d48-82006a62ac12.svg",
+            "usp_heading": "Secure payments",
+            "usp_description": "Payments made by credit card or via Paypal are securely processed and protected using SSL encryption."
+          }
+        }
+      },
+      "block_order": [
+        "usp_hCfjzT",
+        "usp_TRV9Gb",
+        "usp_KpjaHH",
+        "usp_qGkghy",
+        "usp_iCD6g3"
+      ],
+      "name": "Feature USP section",
+      "settings": {
+        "section_heading": "With special",
+        "section_subheading": "<em>care</em>",
+        "desktop_top_padding": 72,
+        "desktop_bottom_padding": 72,
+        "mobile_top_padding": 72,
+        "mobile_bottom_padding": 6060
+      }
     }
   },
   "order": [
     "main",
     "1761548242134f5550",
-    "product_recommendations_qggXJq"
+    "feature_products_tab_switcher_eeD6qC",
+    "product_recommendations_qggXJq",
+    "feature_usp_section_kGHNKp"
   ]
 }
