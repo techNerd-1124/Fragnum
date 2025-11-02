@@ -1,90 +1,92 @@
 {{- 'feature-products-tab-switcher.css' | asset_url | stylesheet_tag -}}
 
 {% style %}
-  .feature-products-tab-switcher-section-container {
+  .feature-products-tab-switcher-section-wrapper {
     padding-top: {{ section.settings.desktop_top_padding }}px;
     padding-bottom: {{ section.settings.desktop_bottom_padding }}px;
   }
 
   @media screen and (max-width: 900px) {
-    .feature-products-tab-switcher-section-container {
+    .feature-products-tab-switcher-section-wrapper {
       padding-top: {{ section.settings.mobile_top_padding }}px;
       padding-bottom: {{ section.settings.mobile_bottom_padding }}px;
     }
   }
 {% endstyle %}
 
-<div class="feature-products-tab-switcher-section-wrapper">
-  <div class="feature-products-tab-switcher-section-headings">
-    <div class="feature-products-tab-switcher-section-heading">
-      {{ section.settings.section_heading }}
+{% if product.metafields.custom.feature_products.value %}
+  <div class="feature-products-tab-switcher-section-wrapper">
+    <div class="feature-products-tab-switcher-section-headings">
+      <div class="feature-products-tab-switcher-section-heading">
+        {{ section.settings.section_heading }}
+      </div>
+      <div class="feature-products-tab-switcher-tab-headings">
+        {% for item in product.metafields.custom.feature_products.value %}
+          <div class="tab-btn {%  if forloop.index == 1 %} active {% endif %}" data-tab="{{ item.feature_product_name }}">
+            {{ item.feature_product_name }}
+          </div>
+        {% endfor %}
+      </div>
     </div>
-    <div class="feature-products-tab-switcher-tab-headings">
+    <div class="feature-products-tab-switcher-section-description">
+      <span class="feature-products-tab-switcher-section-description-content">
+        {{ section.settings.section_description }}
+      </span>
+    </div>
+    <div class="feature-products-tabs-content-section">
       {% for item in product.metafields.custom.feature_products.value %}
-        <div class="tab-btn {%  if forloop.index == 1 %} active {% endif %}" data-tab="{{ item.feature_product_name }}">
-          {{ item.feature_product_name }}
+        <div class="feature-products-tab-panel {%  if forloop.index == 1 %} active {% endif %}" id="{{ item.feature_product_name }}">
+          <div class="feature-products-tab-panel-desc-block">
+            <div class="feature-products-tab-panel-desc-content">
+              {{ item.feature_product_description }}
+            </div>
+          </div>
+
+          {% for image_block in item.feature_product_images.value %}
+            <div class="feature-products-tab-panel-image-block">
+              <img
+                src="{{ image_block | image_url }}"
+                alt="{{ image_block.alt | escape }}"
+                loading="lazy">
+            </div>
+          {% endfor %}
+
+          <div class="feature-products-tab-panel-product-block">
+            {% liquid
+              assign feature_product = item.feature_product.value
+            %}
+
+            {% capture children %}
+                    {% content_for 'block',
+                    type: '_product-card-gallery',
+                    id: 'feature-product-card-gallery',
+                    closest.product: feature_product
+                    %}
+                    {% content_for 'block',
+                    type: 'product-title',
+                    id: 'feature-product-title',
+                    closest.product: feature_product
+                    %}
+                    {% content_for 'block',
+                    type: 'price',
+                    id: 'feature-product-price',
+                    closest.product: feature_product
+                    %}
+                {% endcapture %}
+
+            {% render 'product-card'
+              , 
+ children: children
+              , 
+ product: feature_product
+            %}
+          </div>
+
         </div>
       {% endfor %}
     </div>
   </div>
-  <div class="feature-products-tab-switcher-section-description">
-    <span class="feature-products-tab-switcher-section-description-content">
-      {{ section.settings.section_description }}
-    </span>
-  </div>
-  <div class="feature-products-tabs-content-section">
-    {% for item in product.metafields.custom.feature_products.value %}
-      <div class="feature-products-tab-panel {%  if forloop.index == 1 %} active {% endif %}" id="{{ item.feature_product_name }}">
-        <div class="feature-products-tab-panel-desc-block">
-          <div class="feature-products-tab-panel-desc-content">
-            {{ item.feature_product_description }}
-          </div>
-        </div>
-
-        {% for image_block in item.feature_product_images.value %}
-          <div class="feature-products-tab-panel-image-block">
-            <img
-              src="{{ image_block | image_url }}"
-              alt="{{ image_block.alt | escape }}"
-              loading="lazy">
-          </div>
-        {% endfor %}
-
-        <div class="feature-products-tab-panel-product-block">
-          {% liquid
-            assign feature_product = item.feature_product.value
-          %}
-
-          {% capture children %}
-                {% content_for 'block',
-                type: '_product-card-gallery',
-                id: 'feature-product-card-gallery',
-                closest.product: feature_product
-                %}
-                {% content_for 'block',
-                type: 'product-title',
-                id: 'feature-product-title',
-                closest.product: feature_product
-                %}
-                {% content_for 'block',
-                type: 'price',
-                id: 'feature-product-price',
-                closest.product: feature_product
-                %}
-            {% endcapture %}
-
-          {% render 'product-card'
-            , 
- children: children
-            , 
- product: feature_product
-          %}
-        </div>
-
-      </div>
-    {% endfor %}
-  </div>
-</div>
+{% endif %}
 
 <script>
     const tabButtons = document.querySelectorAll('.tab-btn');
