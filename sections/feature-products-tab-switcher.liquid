@@ -1,0 +1,188 @@
+{{- 'feature-products-tab-switcher.css' | asset_url | stylesheet_tag -}}
+
+{% style %}
+  .feature-products-tab-switcher-section-container {
+    padding-top: {{ section.settings.desktop_top_padding }}px;
+    padding-bottom: {{ section.settings.desktop_bottom_padding }}px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .feature-products-tab-switcher-section-container {
+      padding-top: {{ section.settings.mobile_top_padding }}px;
+      padding-bottom: {{ section.settings.mobile_bottom_padding }}px;
+    }
+  }
+{% endstyle %}
+
+<div class="feature-products-tab-switcher-section-wrapper">
+  <div class="feature-products-tab-switcher-section-headings">
+    <div class="feature-products-tab-switcher-section-heading">
+      {{ section.settings.section_heading }}
+    </div>
+    <div class="feature-products-tab-switcher-tab-headings">
+      {% for item in product.metafields.custom.feature_products.value %}
+        <div class="tab-btn {%  if forloop.index == 1 %} active {% endif %}" data-tab="{{ item.feature_product_name }}">
+          {{ item.feature_product_name }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="feature-products-tab-switcher-section-description">
+    <span class="feature-products-tab-switcher-section-description-content">
+      {{ section.settings.section_description }}
+    </span>
+  </div>
+  <div class="feature-products-tabs-content-section">
+    {% for item in product.metafields.custom.feature_products.value %}
+      <div class="feature-products-tab-panel {%  if forloop.index == 1 %} active {% endif %}" id="{{ item.feature_product_name }}">
+        <div class="feature-products-tab-panel-desc-block">
+          <div class="feature-products-tab-panel-desc-content">
+            {{ item.feature_product_description }}
+          </div>
+        </div>
+
+        {% for image_block in item.feature_product_images.value %}
+          <div class="feature-products-tab-panel-image-block">
+            <img
+              src="{{ image_block | image_url }}"
+              alt="{{ image_block.alt | escape }}"
+              loading="lazy">
+          </div>
+        {% endfor %}
+
+        <div class="feature-products-tab-panel-product-block">
+          {% liquid
+            assign feature_product = item.feature_product.value
+          %}
+
+          {% capture children %}
+                {% content_for 'block',
+                type: '_product-card-gallery',
+                id: 'feature-product-card-gallery',
+                closest.product: feature_product
+                %}
+                {% content_for 'block',
+                type: 'product-title',
+                id: 'feature-product-title',
+                closest.product: feature_product
+                %}
+                {% content_for 'block',
+                type: 'price',
+                id: 'feature-product-price',
+                closest.product: feature_product
+                %}
+            {% endcapture %}
+
+          {% render 'product-card'
+            , 
+ children: children
+            , 
+ product: feature_product
+          %}
+        </div>
+
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const tabPanels = document.querySelectorAll('.feature-products-tab-panel');
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const targetTab = button.getAttribute('data-tab');
+            
+            // Remove active class from all buttons and panels
+            tabButtons.forEach(btn => btn.classList.remove('active'));
+            tabPanels.forEach(panel => panel.classList.remove('active'));
+            
+            // Add active class to clicked button and corresponding panel
+            button.classList.add('active');
+            document.getElementById(targetTab).classList.add('active');
+        });
+    });
+</script>
+
+{% schema %}
+  {
+    "name": "Products tab switcher",
+    "class": "feature-products-tab-switcher-section-container section section--page-width",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Before we proceed with any customization, please add the product tab entries in the Featured Product metafield within the product's admin panel."
+      },
+      {
+        "type": "header",
+        "content": "Section heading and description",
+        "info": "Customize the section headings and description"
+      },
+      {
+        "type": "text",
+        "id": "section_heading",
+        "label": "Heading",
+        "default": "Try layering"
+      },
+      {
+        "type": "textarea",
+        "id": "section_description",
+        "label": "Description",
+        "default": "At Maison Crivelli, each olfactory creation reveals unexpected facets that can be elevated by surprising combinations."
+      }, {
+        "type": "header",
+        "content": "Section color settings",
+        "info": "Customize the color settings for the section"
+      }, {
+        "type": "color",
+        "id": "section_highlight_backgound",
+        "label": "Section highlight backgound color",
+        "default": "#C93825"
+      }, {
+        "type": "color",
+        "id": "section_highlight_text",
+        "label": "Section highlight text color",
+        "default": "#C93825"
+      }, {
+        "type": "header",
+        "content": "Section spacings",
+        "info": "Customize the spacing/paddings for the section for both desktop as well as mobile devices..."
+      }, {
+        "type": "paragraph",
+        "content": "Mention top and bottom paddings for the desktop devices."
+      }, {
+        "type": "number",
+        "id": "desktop_top_padding",
+        "label": "Desktop top padding",
+        "default": 120
+      }, {
+        "type": "number",
+        "id": "desktop_bottom_padding",
+        "label": "Desktop bottom padding",
+        "default": 120
+      }, {
+        "type": "paragraph",
+        "content": "Mention top and bottom paddings for the mobile devices."
+      }, {
+        "type": "number",
+        "id": "mobile_top_padding",
+        "label": "Mobile top padding",
+        "default": 60
+      }, {
+        "type": "number",
+        "id": "mobile_bottom_padding",
+        "label": "Mobile bottom padding",
+        "default": 60
+      }
+    ],
+    "presets": [
+      {
+        "name": "Products tab switcher",
+        "category": "Custom"
+      }
+    ],
+    "enabled_on": {
+      "templates": ["product"]
+    }
+  }
+{% endschema %}
