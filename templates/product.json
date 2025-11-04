@@ -176,17 +176,17 @@
                       "name": "Product title",
                       "settings": {
                         "text": "<h1>{{ closest.product.title }}</h1>",
-                        "width": "100%",
-                        "max_width": "normal",
+                        "width": "fit-content",
+                        "max_width": "narrow",
                         "alignment": "left",
-                        "type_preset": "h3",
+                        "type_preset": "h1",
                         "font": "var(--font-primary--family)",
                         "font_size": "",
                         "line_height": "normal",
                         "letter_spacing": "normal",
                         "case": "none",
                         "wrap": "pretty",
-                        "color": "",
+                        "color": "var(--color-foreground-heading)",
                         "background": false,
                         "background_color": "#00000026",
                         "corner_radius": 0,
@@ -322,7 +322,7 @@
                     "heading": "Product Description",
                     "open_by_default": false,
                     "icon": "none",
-                    "width": 20
+                    "width": 12
                   },
                   "blocks": {
                     "text_4cF8eR": {
@@ -364,7 +364,7 @@
               "type": "variant-picker",
               "settings": {
                 "variant_style": "buttons",
-                "show_swatches": false,
+                "show_swatches": true,
                 "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 0,
@@ -376,7 +376,7 @@
             "buy_buttons_eYQEYi": {
               "type": "buy-buttons",
               "settings": {
-                "stacking": true,
+                "stacking": false,
                 "show_pickup_availability": false,
                 "gift_card_form": true,
                 "padding-block-start": 0,
@@ -387,7 +387,6 @@
               "blocks": {
                 "quantity": {
                   "type": "quantity",
-                  "disabled": true,
                   "static": true,
                   "settings": {},
                   "blocks": {}
@@ -527,6 +526,7 @@
       "block_order": [
         "group_9zd4UU"
       ],
+      "disabled": true,
       "settings": {
         "content_direction": "column",
         "vertical_on_mobile": true,
@@ -676,6 +676,7 @@
       "block_order": [
         "text_cbcgyb"
       ],
+      "disabled": true,
       "name": "t:names.product_recommendations",
       "settings": {
         "product": "{{ closest.product }}",

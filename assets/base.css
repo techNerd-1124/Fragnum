@@ -1486,6 +1486,18 @@ shopify-accelerated-checkout-cart {
   --shopify-accelerated-checkout-button-block-size: var(--height-buy-buttons);
 }
 
+add-to-cart-component .main-add-to-cart{
+  background-color: rgb(201, 56, 37);
+  transition: all 0.4s;
+}
+
+add-to-cart-component .main-add-to-cart:hover{
+  background-color: transparent;
+  color: rgb(201, 56, 37);
+  border: 1px solid rgb(201, 56, 37);
+}
+
+
 /* Collapsible row */
 
 .icon-caret svg {
@@ -4302,4 +4314,12 @@ text-component {
   .h6.h6 select {
     font-size: max(1rem, 100%);
   }
+}
+
+details[open] summary{
+  color: red;
+}
+
+.variant-option legend{
+  display: none;
 }
