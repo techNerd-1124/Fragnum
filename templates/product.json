@@ -405,6 +405,208 @@
         "padding-block-end": 0
       }
     },
+    "1761548242134f5550": {
+      "type": "_blocks",
+      "blocks": {
+        "group_9zd4UU": {
+          "type": "group",
+          "name": "t:names.group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "flex-start",
+            "vertical_alignment": "center",
+            "align_baseline": false,
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "toggle_overlay": false,
+            "overlay_color": "#00000026",
+            "overlay_style": "solid",
+            "gradient_direction": "to top",
+            "link": "",
+            "open_in_new_tab": false,
+            "placeholder": "",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "jumbo_text_dx8cUn": {
+              "type": "jumbo-text",
+              "name": "t:names.jumbo_text",
+              "settings": {
+                "text": "The olfactory experience",
+                "font": "heading",
+                "alignment": "left",
+                "line_height": "0.8",
+                "letter_spacing": "-0.03em",
+                "case": "none",
+                "text_effect": "none",
+                "animation_repeat": false
+              },
+              "blocks": {}
+            },
+            "text_UYD9pV": {
+              "type": "text",
+              "name": "t:names.text",
+              "settings": {
+                "text": "<p>Underground festival,<em>fruity </em>neon lights,<br/>a <em>spicy</em> DJ.<br/>1, 2, 3… PLAY! <em>Raspberry </em>cocktail,<br/>sweet bergamot, leather<em> tempo,<br/>electro</em> cedar, an iris <em>dance.</em></p><p>An oud <em>after-party</em></p>",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "jumbo_text_dx8cUn",
+            "text_UYD9pV"
+          ]
+        }
+      },
+      "block_order": [
+        "group_9zd4UU"
+      ],
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 12,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 78,
+        "padding-block-end": 0
+      }
+    },
+    "feature_products_tab_switcher_eeD6qC": {
+      "type": "feature-products-tab-switcher",
+      "blocks": {
+        "feature-product-card-gallery": {
+          "type": "_product-card-gallery",
+          "static": true,
+          "settings": {
+            "image_ratio": "portrait",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "feature-product-title": {
+          "type": "product-title",
+          "static": true,
+          "settings": {
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "feature-product-price": {
+          "type": "price",
+          "static": true,
+          "settings": {
+            "show_sale_price_first": true,
+            "show_installments": false,
+            "show_tax_info": false,
+            "type_preset": "",
+            "width": "100%",
+            "alignment": "left",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "color": "var(--color-foreground)",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Products tab switcher",
+      "settings": {
+        "section_heading": "Try layering",
+        "section_description": "At Maison Crivelli, each olfactory creation reveals unexpected facets that can be elevated by surprising combinations.",
+        "section_highlight_backgound": "#c93825",
+        "section_highlight_text": "#c93825",
+        "desktop_top_padding": 120,
+        "desktop_bottom_padding": 0,
+        "mobile_top_padding": 60,
+        "mobile_bottom_padding": 60
+      }
+    },
     "product_recommendations_qggXJq": {
       "type": "product-recommendations",
       "blocks": {
@@ -546,49 +748,155 @@
         "padding-block-end": 48
       }
     },
-    "custom_faq_section_jgrAxJ": {
-      "type": "custom-faq-section",
+    "feature_collection_tab_qNcFPq": {
+      "type": "feature-collection-tab",
       "blocks": {
-        "accordion_kjtkyw": {
-          "type": "accordion",
+        "feature-product-card-gallery": {
+          "type": "_product-card-gallery",
+          "static": true,
           "settings": {
-            "question": "Ingredients",
-            "answer": "<p>Alcohol Denat., Parfum, Aqua, Pogostemon Cablin Oil, Vanillin, Citronellol, Citrus Aurantium Bergamia Peel Oil, Ethylhexyl Salicylate, Limonene, Linalool, Butyl Methoxydibenzoylmethane, Linalyl Acetate, Pinene, Beta-Caryophyllene, Pelargonium Graveolens Flower Oil, Rose Flower Oil/Extract, Geraniol, Rose Ketones, Geranyl Acetate, Camphor, Citral, Alcohol, Terpineol, Terpinolene, Tris(Tetramethylhydroxypiperidinol) Citrate, Alpha-Terpinene, Benzyl Benzoate, Farnesol<br/><br/>Flammable product<br/><br/>For external use only</p>"
+            "image_ratio": "portrait",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "feature-product-title": {
+          "type": "product-title",
+          "static": true,
+          "settings": {
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "feature-product-price": {
+          "type": "price",
+          "static": true,
+          "settings": {
+            "show_sale_price_first": true,
+            "show_installments": false,
+            "show_tax_info": false,
+            "type_preset": "",
+            "width": "100%",
+            "alignment": "left",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "color": "var(--color-foreground)",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "name": "Feature collection tab",
+      "settings": {
+        "section_heading": "Our suggestions for",
+        "feature_collection_list": [
+          "your-next-olfactory-adventure",
+          "a-surprising-gift"
+        ],
+        "desktop_top_padding": 80,
+        "desktop_bottom_padding": 0,
+        "mobile_top_padding": 60,
+        "mobile_bottom_padding": 0
+      }
+    },
+    "feature_usp_section_kGHNKp": {
+      "type": "feature-usp-section",
+      "blocks": {
+        "usp_hCfjzT": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Ecrin_Xadeau_Offert_icon_3ad386d5-acfc-49b8-8720-0e36468c8454.svg",
+            "usp_heading": "Complimentary gift box",
+            "usp_description": "Welcome to my shop!Every purchase from our online shop is presented in gift boxes that are thoughtfully and meticulously crafted down to the finest detail, creating a truly unique signature."
           }
         },
-        "accordion_xFKLgk": {
-          "type": "accordion",
+        "usp_TRV9Gb": {
+          "type": "usp",
           "settings": {
-            "question": "Instructions",
-            "answer": "<p>To fully enjoy your olfactory experience and ensure safe use, here are a few tips.<br/><br/>USAGE PRECAUTIONS<br/><br/>•\tHold the bottle about 30 cm (12 inches) away from the skin for optimal and even diffusion.<br/><br/>•\tAvoid delicate or light-colored fabrics to prevent stains.<br/><br/>•\tDo not spray directly onto eyes, mucous membranes, or irritated skin.<br/><br/>•\tIf you have sensitive skin, perform a preliminary test by applying a small amount to the inside of your wrist before regular use.<br/><br/>APPLICATION AND DIFFUSION<br/><br/>•\tSpray the perfume on pulse points (wrists, behind the ears, base of the neck): the warmth of these areas intensifies the diffusion of the notes.<br/><br/>•\tAvoid rubbing your wrists together after application to preserve the purity of the olfactory accords.<br/><br/>•\tApply the perfume to clean, slightly moisturized skin for longer-lasting wear.<br/><br/>STORING YOUR PERFUME<br/><br/>•\tStore your bottle in a cool place, away from direct light, temperature variations, and humidity, to maintain the quality of your fragrance.</p>"
+            "usp_image": "shopify://shop_images/Offre_Decouverte_icon_af88a92b-ac69-4bda-9ef5-cce5f3d5fbc0.svg",
+            "usp_heading": "Discovery offer",
+            "usp_description": "With every purchase of a discovery set, receive a gift code that can be used toward your next order of a 50 ml or 100 ml perfume from the same collection (eaux de parfum or extraits de parfum)."
           }
         },
-        "accordion_pwHj6M": {
-          "type": "accordion",
+        "usp_KpjaHH": {
+          "type": "usp",
           "settings": {
-            "question": "Delivery",
-            "answer": "<p>Complimentary shipping from:<br/><br/>• €50 in France and within the European Union (with exceptions)<br/><br/>• €60 in Switzerland<br/><br/>• €100 internationally<br/><br/>For more information, please refer to our shipping and returns page.</p>"
+            "usp_image": "shopify://shop_images/Livreson_Offerte_Icon_0e20376e-e626-42a4-88db-ea77c077f0cc.svg",
+            "usp_heading": "Complimentary shipping",
+            "usp_description": "For more information, please refer to our shipping and returns page."
+          }
+        },
+        "usp_qGkghy": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Echantillons_Offerts_Icon_0ef482d7-9d8b-4d81-92b3-507c2b399b83.svg",
+            "usp_heading": "Complimentary samples",
+            "usp_description": "Receive 2 complimentary samples of your choice with every order that includes a 50 ml or 100 ml bottle."
+          }
+        },
+        "usp_iCD6g3": {
+          "type": "usp",
+          "settings": {
+            "usp_image": "shopify://shop_images/Paiement_Securse_Icon_266a62ec-40a0-4712-8d48-82006a62ac12.svg",
+            "usp_heading": "Secure payments",
+            "usp_description": "Payments made by credit card or via Paypal are securely processed and protected using SSL encryption."
           }
         }
       },
       "block_order": [
-        "accordion_kjtkyw",
-        "accordion_xFKLgk",
-        "accordion_pwHj6M"
+        "usp_hCfjzT",
+        "usp_TRV9Gb",
+        "usp_KpjaHH",
+        "usp_qGkghy",
+        "usp_iCD6g3"
       ],
-      "name": "Custom FAQ Section",
+      "name": "Feature USP section",
       "settings": {
-        "heading": "",
-        "description": "<p>Oud Maracujá was voted Best Niche Fragrance 2024 by Fragrantica readers.</p>",
-        "image": "shopify://shop_images/MC_AMBI_OM_b73b6f1d-190b-40fb-9722-e355774930dc.webp",
-        "padding_top": 32,
-        "padding_bottom": 32
+        "section_heading": "With special",
+        "section_subheading": "<em>care</em>",
+        "desktop_top_padding": 72,
+        "desktop_bottom_padding": 72,
+        "mobile_top_padding": 72,
+        "mobile_bottom_padding": 60
       }
     }
   },
   "order": [
     "main",
+    "1761548242134f5550",
+    "feature_products_tab_switcher_eeD6qC",
     "product_recommendations_qggXJq",
-    "custom_faq_section_jgrAxJ"
+    "feature_collection_tab_qNcFPq",
+    "feature_usp_section_kGHNKp"
   ]
 }

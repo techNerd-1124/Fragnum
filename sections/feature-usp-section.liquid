@@ -1,0 +1,161 @@
+{{- 'feature-usp-section.css' | asset_url | stylesheet_tag -}}
+
+{% style %}
+  .feature-usp-section-container {
+    padding-top: {{ section.settings.desktop_top_padding }}px;
+    padding-bottom: {{ section.settings.desktop_bottom_padding }}px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .feature-usp-section-container {
+      padding-top: {{ section.settings.mobile_top_padding }}px;
+      padding-bottom: {{ section.settings.mobile_bottom_padding }}px;
+    }
+  }
+{% endstyle %}
+
+
+<div class="feature-usp-section-wrapper">
+  <div class="feature-usp-section-wrapper-header-content">
+    <div class="feature-usp-section-wrapper-header">
+      {{ section.settings.section_heading }}
+    </div>
+    <div class="feature-usp-section-wrapper-sub-header">
+      {{ section.settings.section_subheading }}
+    </div>
+  </div>
+
+  <div class="feature-usp-section-wrapper-card-content">
+    {% for usp in section.blocks %}
+
+      <div class="feature-usp-card">
+        <div class="feature-usp-card-img-container">
+          <img
+            src="{{ usp.settings.usp_image| image_url }}"
+            alt="usp-icon | escape"
+            loading="lazy">
+        </div>
+
+        <div class="feature-usp-card-content">
+          <div class="feature-usp-card-heading">
+            {{ usp.settings.usp_heading }}
+          </div>
+          <div class="feature-usp-card-description">
+            {{ usp.settings.usp_description }}
+          </div>
+        </div>
+      </div>
+
+    {% endfor %}
+  </div>
+</div>
+
+<script></script>
+
+
+{% schema %}
+  {
+    "name": "Feature USP section",
+    "class": "feature-usp-section-container section section--page-width",
+    "settings": [
+      {
+        "type": "paragraph",
+        "content": "Before we proceed with any customization, please add the product tab entries in the Featured Product metafield within the product's admin panel."
+      },
+      {
+        "type": "header",
+        "content": "Section heading and description",
+        "info": "Customize the section headings and description"
+      },
+      {
+        "type": "text",
+        "id": "section_heading",
+        "label": "Heading",
+        "default": "With special"
+      },
+      {
+        "type": "inline_richtext",
+        "id": "section_subheading",
+        "label": "Subheading"
+      }, {
+        "type": "header",
+        "content": "Section spacings",
+        "info": "Customize the spacing/paddings for the section for both desktop as well as mobile devices..."
+      }, {
+        "type": "paragraph",
+        "content": "Mention top and bottom paddings for the desktop devices."
+      }, {
+        "type": "number",
+        "id": "desktop_top_padding",
+        "label": "Desktop top padding",
+        "default": 120
+      }, {
+        "type": "number",
+        "id": "desktop_bottom_padding",
+        "label": "Desktop bottom padding",
+        "default": 120
+      }, {
+        "type": "paragraph",
+        "content": "Mention top and bottom paddings for the mobile devices."
+      }, {
+        "type": "number",
+        "id": "mobile_top_padding",
+        "label": "Mobile top padding",
+        "default": 60
+      }, {
+        "type": "number",
+        "id": "mobile_bottom_padding",
+        "label": "Mobile bottom padding",
+        "default": 60
+      }
+    ],
+    "blocks": [
+      {
+        "type": "usp",
+        "name": "USP block",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "usp_image",
+            "label": "USP Image"
+          }, {
+            "type": "text",
+            "id": "usp_heading",
+            "info": "Include a heading that explains the content.",
+            "label": "USP heading"
+          }, {
+            "type": "textarea",
+            "id": "usp_description",
+            "label": "Welcome message",
+            "default": "Welcome to my shop!"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Feature USP section",
+        "blocks": [
+          {
+            "type": "usp"
+          },
+          {
+            "type": "usp"
+          },
+          {
+            "type": "usp"
+          },
+          {
+            "type": "usp"
+          }, {
+            "type": "usp"
+          }
+        ],
+        "category": "Custom"
+      }
+    ],
+    "enabled_on": {
+      "templates": ["product"]
+    }
+  }
+{% endschema %}
