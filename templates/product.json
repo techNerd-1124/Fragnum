@@ -527,6 +527,45 @@
         "padding-block-end": 0
       }
     },
+    "custom_faq_section_TjL3Uk": {
+      "type": "custom-faq-section",
+      "blocks": {
+        "accordion_FTeiyK": {
+          "type": "accordion",
+          "settings": {
+            "question": "INGREDIENTS",
+            "answer": "<p>Alcohol Denat., Parfum, Aqua, Pogostemon Cablin Oil, Vanillin, Citronellol, Citrus Aurantium Bergamia Peel Oil, Ethylhexyl Salicylate, Limonene, Linalool, Butyl Methoxydibenzoylmethane, Linalyl Acetate, Pinene, Beta-Caryophyllene, Pelargonium Graveolens Flower Oil, Rose Flower Oil/Extract, Geraniol, Rose Ketones, Geranyl Acetate, Camphor, Citral, Alcohol, Terpineol, Terpinolene, Tris(Tetramethylhydroxypiperidinol) Citrate, Alpha-Terpinene, Benzyl Benzoate, Farnesol<br/><br/>Flammable product<br/>For external use only<br/><br/></p>"
+          }
+        },
+        "accordion_MmUzrc": {
+          "type": "accordion",
+          "settings": {
+            "question": "Instructions",
+            "answer": "<p>To fully enjoy your olfactory experience and ensure safe use, here are a few tips.<br/><br/><br/>USAGE PRECAUTIONS<br/>• Hold the bottle about 30 cm (12 inches) away from the skin for optimal and even diffusion.<br/>• Avoid delicate or light-colored fabrics to prevent stains.<br/>• Do not spray directly onto eyes, mucous membranes, or irritated skin.<br/>• If you have sensitive skin, perform a preliminary test by applying a small amount to the inside of your wrist before regular use.<br/><br/><br/>APPLICATION AND DIFFUSION<br/>• Spray the perfume on pulse points (wrists, behind the ears, base of the neck): the warmth of these areas intensifies the diffusion of the notes.<br/>• Avoid rubbing your wrists together after application to preserve the purity of the olfactory accords.<br/>• Apply the perfume to clean, slightly moisturized skin for longer-lasting wear.<br/><br/><br/>STORING YOUR PERFUME<br/>• Store your bottle in a cool place, away from direct light, temperature variations, and humidity, to maintain the quality of your fragrance.</p>"
+          }
+        },
+        "accordion_X7yCdA": {
+          "type": "accordion",
+          "settings": {
+            "question": "Delivery",
+            "answer": "<p>Complimentary shipping from:<br/><br/>• €50 in France and within the European Union (with exceptions)<br/>• €60 in Switzerland<br/>• €100 internationally<br/><br/>For more information, please refer to our shipping and returns page.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "accordion_FTeiyK",
+        "accordion_MmUzrc",
+        "accordion_X7yCdA"
+      ],
+      "name": "Custom FAQ Section",
+      "settings": {
+        "heading": "",
+        "description": "<h5>Oud Maracujá was voted Best Niche Fragrance 2024 by Fragrantica readers.</h5>",
+        "image": "shopify://shop_images/MC_AMBI_OM_4ea4a243-c4b0-446f-bd5f-68054a8e4ae7.webp",
+        "padding_top": 40,
+        "padding_bottom": 0
+      }
+    },
     "feature_products_tab_switcher_eeD6qC": {
       "type": "feature-products-tab-switcher",
       "blocks": {
@@ -894,6 +933,7 @@
   "order": [
     "main",
     "1761548242134f5550",
+    "custom_faq_section_TjL3Uk",
     "feature_products_tab_switcher_eeD6qC",
     "product_recommendations_qggXJq",
     "feature_collection_tab_qNcFPq",
