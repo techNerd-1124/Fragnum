@@ -379,6 +379,20 @@
     top: calc(var(--padding-2xl) - (var(--icon-size-xs) / 2));
     right: calc(var(--padding-2xl) - var(--icon-size-xs));
   }
+
+  @media screen and (max-width: 500px){
+    .buy-buttons-block{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 0.5rem 1rem;
+    z-index: 1;
+    }
+  }
+
+
 {% endstylesheet %}
 
 {% schema %}
