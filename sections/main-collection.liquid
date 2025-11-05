@@ -1,24 +1,80 @@
+<style>
+  .editorial-banner {
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .editorial-image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .editorial-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease
+    , filter 1.4s ease;
+    transform: scale(1);
+  }
+
+  .editorial-banner:hover .editorial-image img {
+    transform: scale(1.08);
+    filter: brightness(1.05);
+  }
+
+  .offer_banner-button-wrapper {
+    width: 100%;
+    position: absolute;
+    bottom: -60px;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    cursor: pointer;
+
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.45s ease-out;
+  }
+
+  .editorial-banner:hover .offer_banner-button-wrapper {
+    bottom: 10px;
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .offer_banner-button-wrapper a {
+    display: block;
+    width: 100%;
+    padding: 15px 30px;
+    text-align: center;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: normal;
+    line-height: 12px;
+  }
+</style>
 
 
 <script
   src="{{ 'results-list.js' | asset_url }}"
   type="module"
-  fetchpriority="low"
-></script>
+  fetchpriority="low"></script>
 
 {% javascript %}
   const url = new URL(window.location.href);
   if (url.hash) {
-    document.addEventListener(
-      'DOMContentLoaded',
-      () => {
-        const card = document.getElementById(url.hash.slice(1));
-        if (card) {
-          card.scrollIntoView({ behavior: 'instant' });
-        }
-      },
-      { once: true }
-    );
+    document.addEventListener('DOMContentLoaded', () => {
+      const card = document.getElementById(url.hash.slice(1));
+      if (card) {
+        card.scrollIntoView({behavior: 'instant'});
+      }
+    }, {once: true});
   }
 {% endjavascript %}
 
@@ -27,23 +83,63 @@
 <results-list
   class="section product-grid-container color-{{ section.settings.color_scheme }}"
   style="--padding-block-start: {{ section.settings.padding-block-start }}px; --padding-block-end: {{ section.settings.padding-block-end }}px;"
-  section-id="{{ section.id }}"
->
-  {% render 'skip-to-content-link', href: '#ResultsList', text: 'accessibility.skip_to_results_list' %}
+  section-id="{{ section.id }}">
+  {% render 'skip-to-content-link'
+    , href: '#ResultsList'
+    , text: 'accessibility.skip_to_results_list' %}
 
-  <div
-    class="collection-wrapper grid gap-style"
-  >
-    {% content_for 'block',
-      type: 'filters',
-      id: 'filters',
-      results: collection,
-      results_size: collection.products_count
+  <div class="collection-wrapper grid gap-style">
+    {% content_for 'block'
+      , type: 'filters'
+      , id: 'filters'
+      , results: collection
+      , results_size: collection.products_count
     %}
 
     {% paginate collection.products by 24 %}
       {% capture children %}
+        {%- assign editorial_position = section.settings.image_position | default: 5 -%}
+        {%- assign repetition = section.settings.offer_banner_repetition | default: "one" -%}
+        {%- assign feature_offer_banner = collection.metafields.custom.feature_editorial_banner -%}
+        {%-  assign count =  1 -%}
         {% for product in collection.products %}
+
+          {% assign lazy_load = false %}
+          {%- if forloop.index > 2 -%}
+            {%- assign lazy_load = true -%}
+          {%- endif -%}
+          {%  if section.settings.show_feature_offer_banner and feature_offer_banner != blank %}
+            {%- assign index = forloop.index -%}
+            {%- assign is_multiple = false -%}
+            
+            {%- if repetition == "multiple" and index > editorial_position -%}  
+              {%- assign flag = editorial_position | minus: 1 -%}
+              {%- if count == flag -%}
+                {%- assign is_multiple = true -%}
+                {%-  assign count =  1 -%}
+              {% else %}
+                {%-  assign count =  count |  plus: 1 -%}
+              {%- endif -%}
+            {%- endif -%}
+            {%- if index == editorial_position or is_multiple -%}
+              <li class="grid__item editorial-banner">
+                <div class="editorial-image">
+                    <img
+                    src="{{ feature_offer_banner.value.editorial_banner_image | image_url }}"
+                    alt="{{ image_block.alt | escape }}"
+                    loading="lazy">
+                </div>
+                {%- if section.settings.show_feature_offer_banner_button -%}
+                  <div class="offer_banner-button-wrapper">
+                    <a href="{{ feature_offer_banner.value.editorial_banner_button_link }}" class="offer_banner-button" style="background-color: {{ section.settings.button_background_color }}; color: {{ section.settings.button_text_color }};">
+                      {{ feature_offer_banner.value.editorial_banner_button_label }}
+                    </a>
+                  </div>
+                {% endif %}
+              </li>
+            {%- endif -%}
+          {% endif %}
+
           <li
             id="{{ section.id }}-{{ product.id }}"
             class="product-grid__item product-grid__item--{{ forloop.index0 }}"
@@ -57,12 +153,11 @@
           </li>
         {% endfor %}
       {% endcapture %}
-
-      {% render 'product-grid',
-        section: section,
-        children: children,
-        products: collection.products,
-        paginate: paginate
+      {% render 'product-grid'
+        , section: section
+        , children: children
+        , products: collection.products
+        , paginate: paginate
       %}
     {% endpaginate %}
   </div>
@@ -78,232 +173,249 @@
   }
 
   .collection-wrapper {
-    @media screen and (min-width: 750px) {
-      grid-template-columns:
-        1fr repeat(
-          var(--centered-column-number),
-          minmax(0, calc((var(--page-width) - var(--page-margin) * 2) / var(--centered-column-number)))
-        )
-        1fr;
-    }
+  @media screen and (min-width: 750px) {
+    grid-template-columns: 1fr repeat(var(--centered-column-number), minmax(0, calc((var(--page-width) - var(--page-margin) * 2) / var(--centered-column-number)))) 1fr;
   }
+}
 
-  .collection-wrapper:has(.facets-block-wrapper--full-width),
-  .collection-wrapper:has(.collection-wrapper--full-width) {
-    @media screen and (min-width: 750px) {
-      grid-column: 1 / -1;
-      grid-template-columns:
-        minmax(var(--page-margin), 1fr) repeat(
-          var(--centered-column-number),
-          minmax(0, calc((var(--page-width) - var(--page-margin) * 2) / var(--centered-column-number)))
-        )
-        minmax(var(--page-margin), 1fr);
-    }
-  }
+.collection-wrapper:has(.facets-block-wrapper--full-width),
+.collection-wrapper:has(.collection-wrapper--full-width) {
+@media screen and (min-width: 750px) {
+  grid-column: 1 / -1;
+  grid-template-columns: minmax(var(--page-margin), 1fr) repeat(var(--centered-column-number), minmax(0, calc((var(--page-width) - var(--page-margin) * 2) / var(--centered-column-number)))) minmax(var(--page-margin), 1fr);
+}
+}
 
-  .collection-wrapper:has(.facets--vertical) .facets-block-wrapper--vertical:not(.hidden) ~ .main-collection-grid {
-    @media screen and (min-width: 750px) {
-      grid-column: var(--facets-vertical-col-width) / var(--full-width-column-number);
-    }
-  }
+.collection-wrapper:has(.facets--vertical) .facets-block-wrapper--vertical:not(.hidden) ~ .main-collection-grid {
+@media screen and (min-width: 750px) {
+  grid-column: var(--facets-vertical-col-width) / var(--full-width-column-number);
+}
+}
 
-  .collection-wrapper:has(.facets-block-wrapper--vertical:not(#filters-drawer)):has(.collection-wrapper--full-width) {
-    @media screen and (min-width: 750px) {
-      grid-column: 1 / -1;
-      grid-template-columns: 0fr repeat(var(--centered-column-number), minmax(0, 1fr)) 0fr;
-    }
-  }
+.collection-wrapper:has(.facets-block-wrapper--vertical:not(#filters-drawer)):has(.collection-wrapper--full-width) {
+@media screen and (min-width: 750px) {
+  grid-column: 1 / -1;
+  grid-template-columns: 0 repeat(var(--centered-column-number), minmax(0, 1fr)) 0;
+}
+}
 
-  :is(.collection-wrapper--full-width, .collection-wrapper--full-width-on-mobile)
-    [product-grid-view='default']
-    .product-grid__card {
-    @media screen and (max-width: 749px) {
-      padding-inline-start: max(var(--padding-xs), var(--padding-inline-start));
-      padding-inline-end: max(var(--padding-xs), var(--padding-inline-end));
-    }
-  }
+:is(.collection-wrapper--full-width, .collection-wrapper--full-width-on-mobile) [product-grid-view='default'] .product-grid__card {
+@media screen and (max-width: 749px) {
+  padding-inline-start: max(var(--padding-xs), var(--padding-inline-start));
+  padding-inline-end: max(var(--padding-xs), var(--padding-inline-end));
+}
+}
 
-  :is(.collection-wrapper--full-width, .collection-wrapper--full-width-on-mobile)
-    [product-grid-view='mobile-single']
-    .product-grid__card {
-    @media screen and (max-width: 749px) {
-      padding-inline-start: max(var(--padding-xs), var(--padding-inline-start));
-      padding-inline-end: max(var(--padding-xs), var(--padding-inline-end));
-    }
-  }
+:is(.collection-wrapper--full-width, .collection-wrapper--full-width-on-mobile) [product-grid-view='mobile-single'] .product-grid__card {
+@media screen and (max-width: 749px) {
+  padding-inline-start: max(var(--padding-xs), var(--padding-inline-start));
+  padding-inline-end: max(var(--padding-xs), var(--padding-inline-end));
+}
+}
 
-  /* Make product media go edge-to-edge by using negative margins */
-  :is(.collection-wrapper--full-width) .card-gallery,
-  :is(.collection-wrapper--full-width-on-mobile) .card-gallery {
-    @media screen and (max-width: 749px) {
-      margin-inline-start: calc(-1 * max(var(--padding-xs), var(--padding-inline-start)));
-      margin-inline-end: calc(-1 * max(var(--padding-xs), var(--padding-inline-end)));
-    }
-  }
+/* Make product media go edge-to-edge by using negative margins */:is(.collection-wrapper--full-width) .card-gallery
+,:is(.collection-wrapper--full-width-on-mobile) .card-gallery {
+@media screen and (max-width: 749px) {
+  margin-inline-start: calc(-1 * max(var(--padding-xs), var(--padding-inline-start)));
+  margin-inline-end: calc(-1 * max(var(--padding-xs), var(--padding-inline-end)));
+}
+}
 {% endstylesheet %}
 
 {% schema %}
-{
-  "name": "t:names.collection_container",
-  "enabled_on": {
-    "templates": ["collection"]
-  },
-  "settings": [
-    {
-      "type": "select",
-      "id": "layout_type",
-      "label": "t:settings.type",
-      "options": [
-        {
-          "value": "grid",
-          "label": "t:options.grid"
-        },
-        {
-          "value": "organic",
-          "label": "t:options.editorial"
-        }
-      ],
-      "default": "grid"
+  {
+    "name": "t:names.collection_container",
+    "enabled_on": {
+      "templates": ["collection"]
     },
-    {
-      "type": "select",
-      "id": "product_card_size",
-      "label": "t:settings.card_size",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:options.small"
-        },
-        {
-          "value": "medium",
-          "label": "t:options.medium"
-        },
-        {
-          "value": "large",
-          "label": "t:options.large"
-        },
-        {
-          "value": "extra-large",
-          "label": "t:options.extra_large"
-        }
-      ],
-      "default": "medium",
-      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
-    },
-    {
-      "type": "select",
-      "id": "mobile_product_card_size",
-      "label": "t:settings.mobile_card_size",
-      "options": [
-        {
-          "value": "small",
-          "label": "t:options.small"
-        },
-        {
-          "value": "large",
-          "label": "t:options.large"
-        }
-      ],
-      "default": "small"
-    },
-    {
-      "type": "header",
-      "content": "t:content.layout"
-    },
-    {
-      "type": "select",
-      "id": "product_grid_width",
-      "label": "t:settings.width",
-      "options": [
-        {
-          "value": "centered",
-          "label": "t:options.page"
-        },
-        {
-          "value": "full-width",
-          "label": "t:options.full"
-        }
-      ],
-      "default": "centered"
-    },
-    {
-      "type": "checkbox",
-      "id": "full_width_on_mobile",
-      "label": "t:settings.full_width_on_mobile",
-      "default": true,
-      "visible_if": "{{ section.settings.product_grid_width != 'full-width' }}"
-    },
-    {
-      "type": "range",
-      "id": "columns_gap_horizontal",
-      "label": "t:settings.horizontal_gap",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "columns_gap_vertical",
-      "label": "t:settings.vertical_gap",
-      "min": 0,
-      "max": 50,
-      "step": 1,
-      "unit": "px",
-      "default": 16
-    },
-    {
-      "type": "range",
-      "id": "padding-inline-start",
-      "label": "t:settings.left_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "range",
-      "id": "padding-inline-end",
-      "label": "t:settings.right_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 0
-    },
-    {
-      "type": "header",
-      "content": "t:content.section_layout"
-    },
-    {
-      "type": "color_scheme",
-      "id": "color_scheme",
-      "label": "t:settings.color_scheme",
-      "default": "scheme-1"
-    },
-    {
-      "type": "range",
-      "id": "padding-block-start",
-      "label": "t:settings.top_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 8
-    },
-    {
-      "type": "range",
-      "id": "padding-block-end",
-      "label": "t:settings.bottom_padding",
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px",
-      "default": 8
-    }
-  ],
-  "presets": []
-}
+    "settings": [
+      {
+        "type": "select",
+        "id": "layout_type",
+        "label": "t:settings.type",
+        "options": [
+          {
+            "value": "grid",
+            "label": "t:options.grid"
+          }, {
+            "value": "organic",
+            "label": "t:options.editorial"
+          }
+        ],
+        "default": "grid"
+      },
+      {
+        "type": "select",
+        "id": "product_card_size",
+        "label": "t:settings.card_size",
+        "options": [
+          {
+            "value": "small",
+            "label": "t:options.small"
+          }, {
+            "value": "medium",
+            "label": "t:options.medium"
+          }, {
+            "value": "large",
+            "label": "t:options.large"
+          }, {
+            "value": "extra-large",
+            "label": "t:options.extra_large"
+          }
+        ],
+        "default": "medium",
+        "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+      },
+      {
+        "type": "select",
+        "id": "mobile_product_card_size",
+        "label": "t:settings.mobile_card_size",
+        "options": [
+          {
+            "value": "small",
+            "label": "t:options.small"
+          }, {
+            "value": "large",
+            "label": "t:options.large"
+          }
+        ],
+        "default": "small"
+      },
+      {
+        "type": "header",
+        "content": "t:content.layout"
+      }, {
+        "type": "select",
+        "id": "product_grid_width",
+        "label": "t:settings.width",
+        "options": [
+          {
+            "value": "centered",
+            "label": "t:options.page"
+          }, {
+            "value": "full-width",
+            "label": "t:options.full"
+          }
+        ],
+        "default": "centered"
+      }, {
+        "type": "checkbox",
+        "id": "full_width_on_mobile",
+        "label": "t:settings.full_width_on_mobile",
+        "default": true,
+        "visible_if": "{{ section.settings.product_grid_width != 'full-width' }}"
+      }, {
+        "type": "range",
+        "id": "columns_gap_horizontal",
+        "label": "t:settings.horizontal_gap",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }, {
+        "type": "range",
+        "id": "columns_gap_vertical",
+        "label": "t:settings.vertical_gap",
+        "min": 0,
+        "max": 50,
+        "step": 1,
+        "unit": "px",
+        "default": 16
+      }, {
+        "type": "range",
+        "id": "padding-inline-start",
+        "label": "t:settings.left_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "range",
+        "id": "padding-inline-end",
+        "label": "t:settings.right_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 0
+      }, {
+        "type": "header",
+        "content": "t:content.section_layout"
+      }, {
+        "type": "color_scheme",
+        "id": "color_scheme",
+        "label": "t:settings.color_scheme",
+        "default": "scheme-1"
+      }, {
+        "type": "range",
+        "id": "padding-block-start",
+        "label": "t:settings.top_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 8
+      }, {
+        "type": "range",
+        "id": "padding-block-end",
+        "label": "t:settings.bottom_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "default": 8
+      }, {
+        "type": "header",
+        "content": "Feature editorial banner settings"
+      }, {
+        "type": "paragraph",
+        "content": "Please first set up the Feature Editorial Banner metafield in each collection where you want to display this banner, before customizing the settings below."
+      }, {
+        "type": "checkbox",
+        "id": "show_feature_offer_banner",
+        "label": "Show feature offer banner",
+        "default": false
+      }, {
+        "type": "checkbox",
+        "id": "show_feature_offer_banner_button",
+        "label": "Show feature offer banner button",
+        "default": false
+      }, {
+        "type": "range",
+        "id": "image_position",
+        "label": "Image position",
+        "min": 1,
+        "max": 24,
+        "step": 1,
+        "default": 1
+      }, {
+        "type": "radio",
+        "id": "offer_banner_repetition",
+        "label": "Offer banner repetition",
+        "options": [
+          {
+            "value": "one",
+            "label": "One Time"
+          }, {
+            "value": "multiple",
+            "label": "Multiple Times"
+          }
+        ],
+        "default": "one"
+      }, {
+        "type": "color",
+        "id": "button_background_color",
+        "label": "Button color",
+        "default": "#009484"
+      }, {
+        "type": "color",
+        "id": "button_text_color",
+        "label": "Button label color",
+        "default": "#FFFFFF"
+      }
+    ],
+    "presets": []
+  }
 {% endschema %}
