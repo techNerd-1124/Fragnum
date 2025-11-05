@@ -6,7 +6,8 @@
  * or related systems. Please exercise caution as any changes
  * made to this file may be overwritten.
  * ------------------------------------------------------------
- */{
+ */
+{
   "sections": {
     "section": {
       "type": "section",
@@ -222,7 +223,13 @@
         "padding-inline-end": 0,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
-        "padding-block-end": 32
+        "padding-block-end": 32,
+        "show_feature_offer_banner": true,
+        "show_feature_offer_banner_button": true,
+        "image_position": 2,
+        "offer_banner_repetition": "multiple",
+        "button_background_color": "#c93825",
+        "button_text_color": "#ffffff"
       }
     }
   },
