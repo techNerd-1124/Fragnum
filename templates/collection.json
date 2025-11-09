@@ -227,7 +227,7 @@
         "show_feature_offer_banner": true,
         "show_feature_offer_banner_button": true,
         "image_position": 2,
-        "offer_banner_repetition": "multiple",
+        "offer_banner_repetition": "one",
         "button_background_color": "#c93825",
         "button_text_color": "#ffffff"
       }
