@@ -51,7 +51,7 @@
       "settings": {
         "speed": 5,
         "section_width": "full-width",
-        "color_scheme": "scheme-5",
+        "color_scheme": "scheme-bec4669d-635f-453a-bd60-6f34b57c3ddd",
         "divider_width": 1,
         "padding-block-start": 15,
         "padding-block-end": 15
@@ -115,7 +115,7 @@
         "divider_width": 0,
         "divider_size": "page-width",
         "border_width": 0,
-        "color_scheme_top": "scheme-1",
+        "color_scheme_top": "scheme-d4b8ca58-57a8-4193-9c34-870de4c5fb89",
         "color_scheme_bottom": "",
         "color_scheme_transparent": "scheme-6",
         "enable_transparent_header_home": false,
