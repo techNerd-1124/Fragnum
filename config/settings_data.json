@@ -373,7 +373,7 @@
           "primary": "#b4361f",
           "primary_hover": "#d1d1d1",
           "border": "#0000000f",
-          "shadow": "#000000",
+          "shadow": "#383838",
           "primary_button_background": "#b4361f",
           "primary_button_text": "#ffffff",
           "primary_button_border": "#000000",
