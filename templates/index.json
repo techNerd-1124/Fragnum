@@ -295,7 +295,7 @@
           "name": "t:names.collection_card",
           "static": true,
           "settings": {
-            "placement": "on_image",
+            "placement": "below_image",
             "horizontal_alignment": "flex-start",
             "vertical_alignment": "flex-end",
             "collection_card_gap": 8,
@@ -304,7 +304,7 @@
             "border": "none",
             "border_width": 1,
             "border_opacity": 100,
-            "border_radius": 0
+            "border_radius": 4
           },
           "blocks": {
             "collection_title_GkUeY6": {
@@ -312,9 +312,9 @@
               "name": "t:names.collection_title",
               "settings": {
                 "width": "100%",
-                "max_width": "normal",
+                "max_width": "narrow",
                 "alignment": "center",
-                "type_preset": "rte",
+                "type_preset": "h4",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -324,7 +324,7 @@
                 "color": "var(--color-foreground)",
                 "background": false,
                 "background_color": "#ffffff",
-                "corner_radius": 0,
+                "corner_radius": 8,
                 "padding-block-start": 4,
                 "padding-block-end": 4,
                 "padding-inline-start": 8,
@@ -337,7 +337,7 @@
               "name": "t:names.collection_card_image",
               "static": true,
               "settings": {
-                "image_ratio": "adapt",
+                "image_ratio": "portrait",
                 "toggle_overlay": false,
                 "overlay_color": "#00000026",
                 "overlay_style": "solid",
@@ -644,7 +644,7 @@
         "vertical_alignment_flex_direction_column": "flex-end",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "large",
+        "section_height": "full-screen",
         "section_height_custom": 50,
         "color_scheme": "scheme-d4b8ca58-57a8-4193-9c34-870de4c5fb89",
         "toggle_overlay": false,
@@ -1830,36 +1830,25 @@
           },
           "blocks": {}
         },
-        "text_kVjd7k": {
-          "type": "text",
-          "name": "t:names.text",
+        "button_JqUDWT": {
+          "type": "button",
+          "name": "t:names.button",
           "settings": {
-            "text": "<p>OUR STORY </p>",
+            "label": "Our Story",
+            "link": "shopify://pages/our-story",
+            "open_in_new_tab": false,
+            "style_class": "button",
             "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "rte",
-            "font": "var(--font-body--family)",
-            "font_size": "1rem",
-            "line_height": "normal",
-            "letter_spacing": "normal",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
           },
           "blocks": {}
         }
       },
       "block_order": [
         "text_XNUzYw",
-        "text_kVjd7k"
+        "button_JqUDWT"
       ],
       "name": "t:names.custom_section",
       "settings": {
