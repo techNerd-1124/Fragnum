@@ -4323,3 +4323,47 @@ details[open] summary{
 .variant-option legend{
   display: none;
 }
+
+/* -------bread-crumbs-starts------- */
+.breadcrumbs ol {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.breadcrumbs li {
+  display: inline-flex;
+  align-items: center;
+}
+.breadcrumbs a {
+  text-decoration: none;
+  letter-spacing: 0px;
+  color: rgba(0, 0, 0, 1);
+  font-size:0.85rem;
+  line-height: 1.4;
+  padding: 0 0.4rem;
+}
+.breadcrumbs .breadcrumbs-icon {
+  display: flex;
+  align-items: center;
+}
+.breadcrumbs .breadcrumbs-icon svg {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+@media screen and (min-width: 750px) {
+  .breadcrumbs {
+    border-bottom: 1px solid rgba(226, 226, 226, 1);
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+  }
+}
+/* -------bread-crumbs-ends------- */
+
+.quick-add__button {
+  display: grid;
+  width: 100%;
+}
+
+.quick-add__button:hover{
+  opacity: 0.8;
+}
