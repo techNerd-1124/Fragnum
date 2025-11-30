@@ -148,11 +148,11 @@
 
     {{ children }}
      {% if product.tags.size > 0 %}
-  <div class="product-card__tags">
+  {% comment %} <div class="product-card__tags">
     {% for tag in product.tags %}
       <span class="product-card__tag">{{ tag }}</span>
     {% endfor %}
-  </div>
+  </div> {% endcomment %}
 {% endif %}
 
   </div>

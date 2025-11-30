@@ -4323,3 +4323,11 @@ details[open] summary{
 .variant-option legend{
   display: none;
 }
+
+.product-grid__item{
+  border: 1px solid #000;
+}
+
+.product-grid__item:not(:nth-child(4n)) {
+  border-right: 0;
+}
