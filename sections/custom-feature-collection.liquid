@@ -1,0 +1,591 @@
+{% style %}
+  .collection-with-banner-container {
+    padding-top: {{ section.settings.desktop_padding_top }}px;
+    padding-bottom: {{ section.settings.desktop_padding_bottom }}px;
+  }
+
+  @media screen and (max-width: 900px) {
+    .collection-with-banner-container {
+      padding-top: {{ section.settings.mobile_top_padding }}px;
+      padding-bottom: {{ section.settings.mobile_bottom_padding }}px;
+    }
+  }
+{% endstyle %}
+
+<style>
+  .collection-with-banner-header {
+    font-size: 42px;
+    font-weight: 400;
+    letter-spacing: normal;
+    line-height: 39.9px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+
+  .collection-with-banner-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .collection-wrapper {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    touch-action: pan-y pinch-zoom;
+    will-change: transform;
+  }
+
+  .collection-wrapper.dragging {
+    transition: none;
+    cursor: grabbing;
+  }
+
+  .collection-wrapper.releasing {
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  .collection-wrapper .product-card-wrapper {
+    flex: 0 0 auto;
+    min-width: 335px;
+    width: calc(25% - 12px);
+    user-select: none;
+  }
+
+  /* Banner card styling */
+  .collection-wrapper .banner-card {
+    flex: 0 0 auto;
+    min-width: 335px;
+    width: calc(25% - 12px);
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 400px;
+    user-select: none;
+  }
+
+  .banner-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+  }
+
+  .nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    border: 1px solid #ddd;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: all 0.3s ease;
+    opacity: 1;
+  }
+
+  .nav-btn:hover:not(.disabled) {
+    background-color: #C93825;
+    border-color: #C93825;
+  }
+
+  .nav-btn:hover:not(.disabled)::before {
+    border-color: white;
+  }
+
+  .nav-btn.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .nav-btn.prev {
+    left: 0;
+  }
+
+  .nav-btn.next {
+    right: 0;
+  }
+
+  .nav-btn::before {
+    content: '';
+    width: 12px;
+    height: 12px;
+    border-top: 2px solid #1a1a1a;
+    border-right: 2px solid #1a1a1a;
+    transition: border-color 0.3s ease;
+  }
+
+  .nav-btn.prev::before {
+    transform: rotate(-135deg);
+    margin-left: 3px;
+  }
+
+  .nav-btn.next::before {
+    transform: rotate(45deg);
+    margin-right: 3px;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .collection-wrapper .product-card-wrapper,
+    .collection-wrapper .banner-card {
+      width: calc(40% - 10px);
+      min-width: 280px;
+    }
+  }
+
+  @media screen and (max-width: 900px) {
+    .collection-with-banner-header {
+      font-size: 32px;
+      line-height: 1.2;
+      margin-bottom: 10px;
+    }
+
+    .nav-btn {
+      width: 40px;
+      height: 40px;
+    }
+
+    .nav-btn.prev {
+      left: 5px;
+    }
+
+    .nav-btn.next {
+      right: 5px;
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .collection-wrapper .product-card-wrapper,
+    .collection-wrapper .banner-card {
+      width: calc(50% - 8px);
+      min-width: 240px;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .collection-with-banner-header {
+      font-size: 28px;
+    }
+
+    .collection-wrapper .product-card-wrapper,
+    .collection-wrapper .banner-card {
+      width: calc(50% - 8px);
+      min-width: 150px;
+    }
+
+    .collection-wrapper .banner-card {
+      min-height: 300px;
+    }
+
+    .nav-btn {
+      width: 35px;
+      height: 35px;
+    }
+  }
+</style>
+
+<div class="collection-with-banner-container">
+  <div class="collection-with-banner-header">
+    {{ section.settings.collection_header }}
+  </div>
+
+  <div class="collection-with-banner-wrapper">
+    <button class="nav-btn prev" data-direction="-1">
+      <span class="visually-hidden">Previous</span>
+    </button>
+
+    <div class="collection-wrapper" data-wrapper="collection-slider">
+      {% assign collection_products = section.settings.collection_link.products %}
+      {% assign banner_position = section.settings.Position | minus: 1 %}
+      {% assign image_appearance = section.settings.image_appearance %}
+      {% assign collection_image = section.settings.collection_image %}
+      {% assign product_count = 0 %}
+
+        {% for collectionProduct in collection_products limit: 12 %}
+        {% liquid
+          assign feature_product = collectionProduct
+        %}
+
+        {% comment %} Insert banner at specified position for single appearance {% endcomment %}
+        {% if image_appearance == 'single' and product_count == banner_position and collection_image != blank %}
+          <div class="banner-card" style="background-image: url('{{ collection_image | image_url }}');">
+            <img
+              src="{{ collection_image | image_url }}"
+              alt="{{ section.settings.collection_header }}"
+              loading="lazy">
+          </div>
+        {% endif %}
+
+        {% capture children %}
+          {% content_for 'block',
+            type: '_product-card-gallery',
+            id: 'feature-product-card-gallery',
+            closest.product: feature_product
+          %}
+          {% content_for 'block',
+            type: 'product-title',
+            id: 'feature-product-title',
+            closest.product: feature_product
+          %}
+          {% content_for 'block',
+            type: 'price',
+            id: 'feature-product-price',
+            closest.product: feature_product
+          %}
+        {% endcapture %}
+
+        <div class="product-card-wrapper">
+          {% render 'product-card'
+            , children: children
+            , product: feature_product %}
+        </div>
+
+        {% comment %} Insert banner uniformly for multi appearance {% endcomment %}
+        {% if image_appearance == 'multi' and collection_image != blank %}
+          {% assign next_position = product_count | plus: 1 %}
+          {% assign position_check = next_position | modulo: banner_position %}
+          {% if position_check == 0 and banner_position > 0 %}
+            <div class="banner-card" style="background-image: url('{{ collection_image | image_url }}');">
+              <img
+                src="{{ collection_image | image_url }}"
+                alt="{{ section.settings.collection_header }}"
+                loading="lazy">
+            </div>
+          {% endif %}
+        {% endif %}
+
+        {% assign product_count = product_count | plus: 1 %}
+      {% endfor %}
+    </div>
+
+    <button class="nav-btn next" data-direction="1">
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>
+
+<script>
+  (function() {
+    'use strict';
+  
+    let currentSlide = 0;
+    const sliderWrapper = document.querySelector('[data-wrapper="collection-slider"]');
+    const prevBtn = document.querySelector('.collection-with-banner-wrapper .nav-btn.prev');
+    const nextBtn = document.querySelector('.collection-with-banner-wrapper .nav-btn.next');
+  
+    if (!sliderWrapper || !prevBtn || !nextBtn) return;
+  
+    // Touch/Drag variables
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+  
+    const isMobile = () => window.innerWidth <= 900;
+  
+    function getVisibleCards() {
+      const width = window.innerWidth;
+      if (width <= 768) return 2;
+      if (width <= 1200) return 2.5;
+      return 4;
+    }
+  
+    function getCardWidth() {
+      const cards = sliderWrapper.querySelectorAll('.product-card-wrapper, .banner-card');
+      if (cards.length === 0) return 0;
+      return cards[0].offsetWidth + 16; // card width + gap
+    }
+  
+    function updateSlider(smooth = true) {
+      const cards = sliderWrapper.querySelectorAll('.product-card-wrapper, .banner-card');
+      if (cards.length === 0) return;
+  
+      const cardWidth = cards[0].offsetWidth;
+      const gap = 16;
+      const offset = -(currentSlide * (cardWidth + gap));
+  
+      sliderWrapper.classList.remove('dragging', 'releasing');
+  
+      if (smooth) {
+        sliderWrapper.classList.add('releasing');
+        sliderWrapper.style.transition = 'transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+      } else {
+        sliderWrapper.style.transition = 'none';
+      }
+  
+      sliderWrapper.style.transform = `translateX(${offset}px)`;
+      updateNavigationButtons();
+    }
+  
+    function updateNavigationButtons() {
+      const cards = sliderWrapper.querySelectorAll('.product-card-wrapper, .banner-card');
+      const totalCards = cards.length;
+      const visibleCards = getVisibleCards();
+      const maxSlide = Math.max(0, Math.ceil(totalCards - visibleCards));
+  
+      if (currentSlide <= 0) {
+        prevBtn.classList.add('disabled');
+      } else {
+        prevBtn.classList.remove('disabled');
+      }
+  
+      if (currentSlide >= maxSlide) {
+        nextBtn.classList.add('disabled');
+      } else {
+        nextBtn.classList.remove('disabled');
+      }
+    }
+  
+    function slideProducts(direction) {
+      const cards = sliderWrapper.querySelectorAll('.product-card-wrapper, .banner-card');
+      const totalCards = cards.length;
+      const visibleCards = getVisibleCards();
+      const maxSlide = Math.max(0, Math.ceil(totalCards - visibleCards));
+  
+      const newSlide = currentSlide + direction;
+  
+      if (newSlide >= 0 && newSlide <= maxSlide) {
+        currentSlide = newSlide;
+        updateSlider(true);
+      }
+    }
+  
+    // Touch/Drag event handlers
+    function touchStart(index) {
+      return function(event) {
+        if (!isMobile()) return; // Only enable touch on mobile
+        
+        isDragging = true;
+        startPos = getPositionX(event);
+        animationID = requestAnimationFrame(animation);
+        sliderWrapper.classList.add('dragging');
+      };
+    }
+  
+    function touchMove(event) {
+      if (!isDragging || !isMobile()) return;
+      
+      const currentPosition = getPositionX(event);
+      currentTranslate = prevTranslate + currentPosition - startPos;
+    }
+  
+    function touchEnd() {
+      if (!isMobile()) return;
+      
+      isDragging = false;
+      cancelAnimationFrame(animationID);
+      sliderWrapper.classList.remove('dragging');
+  
+      const movedBy = currentTranslate - prevTranslate;
+      const cardWidth = getCardWidth();
+  
+      // Determine if swipe was significant enough (reduced threshold for easier swiping)
+      if (Math.abs(movedBy) > cardWidth / 5) {
+        if (movedBy < 0) {
+          slideProducts(1); // Swipe left - next
+        } else {
+          slideProducts(-1); // Swipe right - prev
+        }
+      } else {
+        // Snap back to current position with smooth animation
+        sliderWrapper.classList.add('releasing');
+        updateSlider(true);
+      }
+  
+      const cards = sliderWrapper.querySelectorAll('.product-card-wrapper, .banner-card');
+      const totalCards = cards.length;
+      const visibleCards = getVisibleCards();
+      const maxSlide = Math.max(0, Math.ceil(totalCards - visibleCards));
+      
+      // Update prevTranslate for next drag
+      prevTranslate = -(currentSlide * getCardWidth());
+      currentTranslate = prevTranslate;
+    }
+  
+    function getPositionX(event) {
+      return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+    }
+  
+    function animation() {
+      if (isDragging && isMobile()) {
+        sliderWrapper.style.transition = 'none';
+        sliderWrapper.style.transform = `translateX(${currentTranslate}px)`;
+        requestAnimationFrame(animation);
+      }
+    }
+  
+    // Add touch event listeners
+    sliderWrapper.addEventListener('touchstart', touchStart(0));
+    sliderWrapper.addEventListener('touchmove', touchMove);
+    sliderWrapper.addEventListener('touchend', touchEnd);
+  
+    // Add mouse event listeners for desktop drag (optional)
+    sliderWrapper.addEventListener('mousedown', touchStart(0));
+    sliderWrapper.addEventListener('mousemove', touchMove);
+    sliderWrapper.addEventListener('mouseup', touchEnd);
+    sliderWrapper.addEventListener('mouseleave', () => {
+      if (isDragging) touchEnd();
+    });
+  
+    // Prevent context menu on long press
+    sliderWrapper.addEventListener('contextmenu', (e) => {
+      if (isDragging) e.preventDefault();
+    });
+  
+    // Button click handlers
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      slideProducts(-1);
+    });
+  
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      slideProducts(1);
+    });
+  
+    // Resize handler
+    let resizeTimer;
+    function handleResize() {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        currentSlide = 0;
+        prevTranslate = 0;
+        currentTranslate = 0;
+        updateSlider(false);
+      }, 250);
+    }
+  
+    window.addEventListener('resize', handleResize);
+  
+    // Initialize
+    function init() {
+      updateSlider(false);
+      requestAnimationFrame(() => updateSlider(false));
+      setTimeout(() => updateSlider(false), 400);
+    }
+  
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  
+    window.addEventListener('load', () => updateSlider(false));
+  })();
+</script>
+
+{% schema %}
+  {
+    "name": "Collection with banner",
+    "class": "section section--page-width",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Customize spacing for the section"
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_top",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Desktop top spacing",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "desktop_padding_bottom",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Desktop bottom spacing",
+        "default": 16
+      },
+      {
+        "type": "range",
+        "id": "mobile_top_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile top padding",
+        "default": 16
+      }, {
+        "type": "range",
+        "id": "mobile_bottom_padding",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px",
+        "label": "Mobile bottom padding",
+        "default": 16
+      }, {
+        "type": "header",
+        "content": "Collection settings",
+        "info": "Setup your feature collection with banner section"
+      }, {
+        "type": "text",
+        "id": "collection_header",
+        "label": "Collection Header",
+        "default": "Featured Collection"
+      }, {
+        "type": "collection",
+        "id": "collection_link",
+        "label": "Collection picker"
+      }, {
+        "type": "header",
+        "content": "Banner settings"
+      }, {
+        "type": "image_picker",
+        "id": "collection_image",
+        "label": "Banner image"
+      }, {
+        "type": "select",
+        "id": "image_appearance",
+        "label": "Banner appearance",
+        "options": [
+          {
+            "value": "single",
+            "label": "Single time"
+          }, {
+            "value": "multi",
+            "label": "Multiple and uniformly"
+          }
+        ],
+        "default": "single",
+        "info": "Choose how the banner appears in the slider"
+      }, {
+        "type": "range",
+        "id": "Position",
+        "min": 1,
+        "max": 12,
+        "step": 1,
+        "unit": "pos",
+        "label": "Banner position",
+        "default": 3,
+        "info": "For 'Single': Position of banner. For 'Multi': Banner appears every N items"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Collection with banner"
+      }
+    ],
+    "enabled_on": {
+      "templates": ["*"]
+    }
+  }
+{% endschema %}
