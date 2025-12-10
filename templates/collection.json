@@ -124,6 +124,87 @@
         "padding-block-end": 0
       }
     },
+    "collection_navbar_Ekq6PP": {
+      "type": "collection-navbar",
+      "blocks": {
+        "collection_block_8kCgF7": {
+          "type": "collection_block",
+          "settings": {
+            "collection_name": "All Perfumes",
+            "collection_image": "shopify://shop_images/nav-img-all-perfumes.avif",
+            "collection_link": "all",
+            "collection_background": "#F2F2F2",
+            "collection_text_color": "#1A1A1A"
+          }
+        },
+        "collection_block_dg6zmY": {
+          "type": "collection_block",
+          "settings": {
+            "collection_name": "Ambery",
+            "collection_image": "shopify://shop_images/nav-img-impressions.avif",
+            "collection_link": "ambery",
+            "collection_background": "#F2F2F2",
+            "collection_text_color": "#1A1A1A"
+          }
+        },
+        "collection_block_UeYC3c": {
+          "type": "collection_block",
+          "settings": {
+            "collection_name": "Floral",
+            "collection_image": "shopify://shop_images/VictusVortex.png",
+            "collection_link": "floral",
+            "collection_background": "#F2F2F2",
+            "collection_text_color": "#1A1A1A"
+          }
+        },
+        "collection_block_3e7BLt": {
+          "type": "collection_block",
+          "settings": {
+            "collection_name": "Citrus",
+            "collection_image": "shopify://shop_images/citrus-perfumes-6633e41ad3543.avif",
+            "collection_link": "citrus",
+            "collection_background": "#F2F2F2",
+            "collection_text_color": "#1A1A1A"
+          }
+        },
+        "collection_block_gYRYjR": {
+          "type": "collection_block",
+          "settings": {
+            "collection_name": "Fresh",
+            "collection_image": "shopify://shop_images/PacifiqueCurrant-P1.png",
+            "collection_link": "woody",
+            "collection_background": "#F2F2F2",
+            "collection_text_color": "#1A1A1A"
+          }
+        },
+        "collection_block_wMTYGy": {
+          "type": "collection_block",
+          "settings": {
+            "collection_name": "Musky",
+            "collection_image": "shopify://shop_images/1046x1395-9.webp",
+            "collection_link": "musky",
+            "collection_background": "#F2F2F2",
+            "collection_text_color": "#1A1A1A"
+          }
+        }
+      },
+      "block_order": [
+        "collection_block_8kCgF7",
+        "collection_block_dg6zmY",
+        "collection_block_UeYC3c",
+        "collection_block_3e7BLt",
+        "collection_block_gYRYjR",
+        "collection_block_wMTYGy"
+      ],
+      "name": "Collection navbar",
+      "settings": {
+        "desktop_padding_top": 16,
+        "desktop_padding_bottom": 16,
+        "mobile_padding_top": 16,
+        "mobile_padding_bottom": 16,
+        "collection_nav": true
+      }
+    },
     "main": {
       "type": "main-collection",
       "blocks": {
@@ -387,6 +468,7 @@
   },
   "order": [
     "section",
+    "collection_navbar_Ekq6PP",
     "main"
   ]
 }
