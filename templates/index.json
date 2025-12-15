@@ -1205,6 +1205,110 @@
         "padding-block-end": 32
       }
     },
+    "discover_stories_J3AH3H": {
+      "type": "discover-stories",
+      "blocks": {
+        "review_block_ccAQRz": {
+          "type": "review_block",
+          "settings": {
+            "review_product": "fragnum-sauvage",
+            "review_title": "Wonderful",
+            "review_star": "five",
+            "review_text": "<p>I first tried this fragrance with a sample I received. I instantly fell in love with it. Sadly I never have enough money to buy a full bottle but am able to indulge in the fragrance by buying occasional travel sized bottles. It’s a fragrance that helps me feel happy and in control.</p>",
+            "recommend_text": "<em>Yes</em>",
+            "performance_text": "<strong>Awesome</strong>",
+            "impression_text": "<strong>Exceeded</strong>",
+            "modal_opener_button_label": "Full story",
+            "reviewer_name": "Subham",
+            "reviewer_city": "Bhubaneswar",
+            "reviewer_date": "12/09/25",
+            "review_image_1": "shopify://shop_images/MC_LAYER_RS_1.webp",
+            "review_image_2": "shopify://shop_images/MC_LAYER_BD_2.webp",
+            "review_image_3": "shopify://shop_images/MC_LAYER_SV_2.webp"
+          }
+        },
+        "review_block_JePFAU": {
+          "type": "review_block",
+          "settings": {
+            "review_product": "perfume-by-fragnum",
+            "review_title": "Fantastischer Duft",
+            "review_star": "five",
+            "review_text": "<p>Der Duft ist einfach toll. Volle Empfehlung wenn man auf Süße, Milchige Düfte steht. Toll</p>",
+            "recommend_text": "<em>Yes</em>",
+            "performance_text": "<strong>Beautiful</strong>",
+            "impression_text": "<strong>Exceeded</strong>",
+            "modal_opener_button_label": "Full story",
+            "reviewer_name": "Voracia W.",
+            "reviewer_city": "Paris",
+            "reviewer_date": "32/09/25"
+          }
+        },
+        "review_block_47aRpx": {
+          "type": "review_block",
+          "settings": {
+            "review_product": "outlands-copy",
+            "review_title": "Cozy winter treat",
+            "review_star": "five",
+            "review_text": "<p>It reminds me of something delicious but not quite identifiable: steamed vanilla milk, toasted marshmallows, sesame latte, and horchata. There's a sweet milkiness with a whiff of burnt sugar and musk lingering in the background. It's a rich, sweet, and creamy scent that lasts for hours and fades into a clean smell like anise and soap.</p>",
+            "recommend_text": "<em>Yes</em>",
+            "performance_text": "<strong>Awesome</strong>",
+            "impression_text": "<strong>As Expected</strong>",
+            "modal_opener_button_label": "Full story",
+            "reviewer_name": "JP P.",
+            "reviewer_city": "NY",
+            "reviewer_date": "23/10/25"
+          }
+        },
+        "review_block_PQ3pQf": {
+          "type": "review_block",
+          "settings": {
+            "review_product": "oud-maracuja",
+            "review_title": "Perfection",
+            "review_star": "five",
+            "review_text": "<p>This is my go-to cold weather scent. It’s warm but not cloying, spicy and complex and creamy without being waxy. I have the 30ml bottle on my dresser and carry the 10ml in my purse for a late afternoon refresher. I had a colleague follow me down a hallway to confirm the scent was mine and then demand to know where I’d gotten it.</p>",
+            "recommend_text": "<em>Yes</em>",
+            "performance_text": "<strong>Awesome</strong>",
+            "impression_text": "<strong>Exceeded</strong>",
+            "modal_opener_button_label": "Full story",
+            "reviewer_name": "Heather M.",
+            "reviewer_city": "Sydney",
+            "reviewer_date": "10/10/25"
+          }
+        },
+        "review_block_VqgzXF": {
+          "type": "review_block",
+          "settings": {
+            "review_product": "aqua-di-solo",
+            "review_title": "Milk expressive",
+            "review_star": "five",
+            "review_text": "<p>I love this smell in this scent space. It’s perfect on its own or with a vanilla perfume oil to deepen the sweetness. It is a bit Smokey but in a leather/mahogany wood office type of way, not a campfire.</p>",
+            "recommend_text": "<em>Yes</em>",
+            "performance_text": "<strong>Awesome</strong>",
+            "impression_text": "<strong>Exceeded</strong>",
+            "modal_opener_button_label": "Full story",
+            "reviewer_name": "Lucinda",
+            "reviewer_city": "Florida",
+            "reviewer_date": "21/10/25"
+          }
+        }
+      },
+      "block_order": [
+        "review_block_ccAQRz",
+        "review_block_JePFAU",
+        "review_block_47aRpx",
+        "review_block_PQ3pQf",
+        "review_block_VqgzXF"
+      ],
+      "name": "Discover with stories",
+      "settings": {
+        "desktop_padding_top": 16,
+        "desktop_padding_bottom": 16,
+        "mobile_top_padding": 16,
+        "mobile_bottom_padding": 16,
+        "section_header": "",
+        "header_appearance": "left"
+      }
+    },
     "section_jL6bce": {
       "type": "section",
       "blocks": {
@@ -1970,6 +2074,7 @@
     "section_8aLgLj",
     "collection_list_QCDt9T",
     "section_dVRAmf",
+    "discover_stories_J3AH3H",
     "section_jL6bce",
     "section_NDUhQ9",
     "section_wC8D4b",
