@@ -51,7 +51,7 @@
             </li>
   
   
-          {% when 'collection' and collection.handle %}
+          {% when 'collection' %}
             {% if current_tags %}
               <li>{{ collection.title | link_to: collection.url }}</li>
               <li>
@@ -79,4 +79,13 @@
         {% endcase %}
       </ol>
     </nav>
-  {% endif %}
+  {% endif %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% when 'collection' and collection.handle %}"
+  to: "{% when 'collection' %}"
+  position: 2105..2128
+{%- endcomment -%}
